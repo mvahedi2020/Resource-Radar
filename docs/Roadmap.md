@@ -2,6 +2,6 @@
 ## Project Objective
 A visual forecasting tool that maps team availability against incoming project scopes.
 ## Upcoming Epics
-- [ ] Initial MVP Architecture
-- [ ] Implement Dashboard UI
-- [ ] Add Mock Data Integrations
+- [x] Initial MVP Architecture
+- [x] Implement Dashboard UI
+- [x] Add Mock Data Integrations
