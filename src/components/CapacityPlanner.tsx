@@ -2,16 +2,20 @@
 import React, { useState } from 'react';
 
 const developers = [
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' },
-  { id: 3, name: 'Charlie' },
+  { id: 1, name: 'Elena Rodriguez' },
+  { id: 2, name: 'Jamal Washington' },
+  { id: 3, name: 'Sophia Chen' },
+  { id: 4, name: 'Marcus Thorne' },
+  { id: 5, name: 'Priya Patel' },
 ];
 
 export default function CapacityPlanner() {
   const [points, setPoints] = useState<Record<number, number>>({
-    1: 5,
-    2: 12,
-    3: 20,
+    1: 8,
+    2: 18,
+    3: 24,
+    4: 12,
+    5: 5,
   });
 
   const getStatusColor = (pts: number) => {
