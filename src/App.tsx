@@ -75,18 +75,17 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="topbar">
+      <aside className="planning-rail">
         <a className="brand" href="#plan">
           <span className="brand-mark"><span /></span>
-          <span><b>Resource Radar</b><small>Northstar · sample workspace</small></span>
+          <span><b>Resource Radar</b><small>Northstar sample plan</small></span>
         </a>
-        <span className="demo-chip">Fictional product demo</span>
         <nav aria-label="Primary navigation">
           {([['plan', 'Plan'], ['scenarios', 'Scenarios'], ['about', 'About']] as const).map(([id, label]) => <a key={id} href={`#${id}`} className={view === id ? 'active' : ''}>{label}</a>)}
         </nav>
-      </header>
-
-      <main>
+        <div className="rail-note"><span>Sample only</span><p>Plan with fictional people and local browser data.</p></div>
+      </aside>
+      <div className="work-area"><main>
         {warning && <div className="warning" role="alert"><AlertTriangle size={18} /><span>{warning}</span></div>}
         {view === 'plan' && <>
           <section className="page-head">
@@ -138,7 +137,7 @@ export default function App() {
 
         {view === 'about' && <section className="narrative-page"><p className="eyebrow">Independent sample</p><h1>A planning interaction, built to be examined.</h1><p className="lede">Resource Radar is a fictional portfolio artifact for Northstar, a fictional B2B SaaS company. It runs entirely in your browser, uses no authentication or paid service, and makes no connection to a production system.</p><div className="about-grid"><article><h2>What it demonstrates</h2><p>Capacity arithmetic, visible constraints, editable allocations, scenario discipline, and initiative-level consequences.</p></article><article><h2>What it does not claim</h2><p>The names, initiatives, usage, and decisions are sample data. Proposed metrics in the product documents are targets, not measured outcomes.</p></article></div><a className="case-link" href="https://github.com/mvahedi2020/Resource-Radar/blob/main/docs/product/Case_Study.md">Read the product case study <ArrowUpRight size={18} /></a></section>}
       </main>
-      <footer><span>Northstar sample · Independent demo · Data stays on this device</span><button onClick={reset}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer>
+      <footer><span>Northstar sample · Data stays on this device</span><button onClick={reset}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer></div>
     </div>
   )
 }

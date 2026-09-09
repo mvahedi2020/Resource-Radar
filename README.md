@@ -31,6 +31,7 @@ All people and initiatives are fictional. No integrations, collaboration, staffi
 ## Product evidence
 
 - [Case study](docs/product/Case_Study.md)
+- [Control matrix](docs/product/Control_Matrix.md)
 - [Requirements](docs/product/PRD.md)
 - [Proposed metrics and next research](docs/product/Measures.md)
 - [Commercial hypotheses](docs/product/GTM_Strategy.md)
