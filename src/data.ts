@@ -1,0 +1,33 @@
+import type { Plan } from './types'
+
+export const samplePlan: Plan = {
+  weeks: [
+    { id: 'sep14', label: 'Sep 14', dates: '14–18 Sep' },
+    { id: 'sep21', label: 'Sep 21', dates: '21–25 Sep' },
+    { id: 'sep28', label: 'Sep 28', dates: '28 Sep–2 Oct' },
+    { id: 'oct05', label: 'Oct 5', dates: '5–9 Oct' },
+  ],
+  initiatives: [
+    { id: 'atlas', name: 'Atlas onboarding', code: 'ATL', tone: '#0f7b78' },
+    { id: 'signal', name: 'Signal accounts', code: 'SIG', tone: '#3764a5' },
+    { id: 'trust', name: 'Trust center', code: 'TRU', tone: '#b65f33' },
+  ],
+  people: [
+    { id: 'maya', name: 'Maya Chen', role: 'Product design', initials: 'MC', capacity: { sep14: 5, sep21: 5, sep28: 5, oct05: 5 }, timeOff: { sep14: 0, sep21: 1, sep28: 0, oct05: 0 }, commitments: { sep14: 1, sep21: 1, sep28: 1, oct05: 1 } },
+    { id: 'noah', name: 'Noah Williams', role: 'Staff engineering', initials: 'NW', capacity: { sep14: 5, sep21: 5, sep28: 5, oct05: 5 }, timeOff: { sep14: 0, sep21: 0, sep28: 5, oct05: 0 }, commitments: { sep14: 1, sep21: 1, sep28: 0, oct05: 1 } },
+    { id: 'priya', name: 'Priya Raman', role: 'Data & insights', initials: 'PR', capacity: { sep14: 4, sep21: 4, sep28: 4, oct05: 4 }, timeOff: { sep14: 0, sep21: 0, sep28: 0, oct05: 1 }, commitments: { sep14: 1, sep21: 1, sep28: 1, oct05: 1 } },
+    { id: 'eli', name: 'Eli Foster', role: 'Product marketing', initials: 'EF', capacity: { sep14: 5, sep21: 5, sep28: 5, oct05: 5 }, timeOff: { sep14: 0, sep21: 0, sep28: 0, oct05: 0 }, commitments: { sep14: 2, sep21: 2, sep28: 2, oct05: 2 } },
+  ],
+  allocations: [
+    { personId: 'maya', initiativeId: 'atlas', weekId: 'sep14', days: 3 }, { personId: 'maya', initiativeId: 'signal', weekId: 'sep14', days: 1 },
+    { personId: 'maya', initiativeId: 'atlas', weekId: 'sep21', days: 3 }, { personId: 'maya', initiativeId: 'trust', weekId: 'sep21', days: 1 },
+    { personId: 'maya', initiativeId: 'signal', weekId: 'sep28', days: 3 }, { personId: 'maya', initiativeId: 'trust', weekId: 'oct05', days: 3 },
+    { personId: 'noah', initiativeId: 'atlas', weekId: 'sep14', days: 4 }, { personId: 'noah', initiativeId: 'atlas', weekId: 'sep21', days: 3 }, { personId: 'noah', initiativeId: 'signal', weekId: 'sep21', days: 2 },
+    { personId: 'noah', initiativeId: 'signal', weekId: 'sep28', days: 1 }, { personId: 'noah', initiativeId: 'trust', weekId: 'oct05', days: 4 },
+    { personId: 'priya', initiativeId: 'atlas', weekId: 'sep14', days: 2 }, { personId: 'priya', initiativeId: 'signal', weekId: 'sep14', days: 2 },
+    { personId: 'priya', initiativeId: 'signal', weekId: 'sep21', days: 3 }, { personId: 'priya', initiativeId: 'signal', weekId: 'sep28', days: 2 }, { personId: 'priya', initiativeId: 'trust', weekId: 'oct05', days: 3 },
+    { personId: 'eli', initiativeId: 'atlas', weekId: 'sep14', days: 3 }, { personId: 'eli', initiativeId: 'atlas', weekId: 'sep21', days: 2 }, { personId: 'eli', initiativeId: 'trust', weekId: 'sep21', days: 1 }, { personId: 'eli', initiativeId: 'trust', weekId: 'sep28', days: 3 }, { personId: 'eli', initiativeId: 'trust', weekId: 'oct05', days: 3 },
+  ],
+}
+
+export const clonePlan = (plan: Plan): Plan => JSON.parse(JSON.stringify(plan)) as Plan

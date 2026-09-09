@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:4173/Resource-Radar/",
+  "passed": true,
+  "scenarios": [
+    "zero capacity reallocation",
+    "baseline vs draft",
+    "apply persistence",
+    "undo",
+    "export",
+    "about/back",
+    "reset",
+    "mobile search no overflow",
+    "storage unavailable"
+  ],
+  "errors": []
+}
