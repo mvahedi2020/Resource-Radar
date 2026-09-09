@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, ArrowUpRight, CalendarDays, Check, Download, RotateCcw, Search, Users } from 'lucide-react'
 import { clonePlan, samplePlan } from './data'
 import { changedCells, getLoad, initiativeImpact, setAllocation, setConstraint } from './logic'
@@ -29,6 +29,9 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [warning, setWarning] = useState(initial.warning)
   const [saved, setSaved] = useState(false)
+  const [confirmReset, setConfirmReset] = useState(false)
+  const [resetSnapshot, setResetSnapshot] = useState<{ baseline: Plan; draft: Plan } | null>(null)
+  const cancelResetRef = useRef<HTMLButtonElement>(null)
   const changes = changedCells(baseline, draft)
 
   useEffect(() => {
@@ -36,6 +39,14 @@ export default function App() {
     addEventListener('hashchange', onHash)
     return () => removeEventListener('hashchange', onHash)
   }, [])
+
+  useEffect(() => {
+    if (!confirmReset) return
+    cancelResetRef.current?.focus()
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setConfirmReset(false) }
+    addEventListener('keydown', closeOnEscape)
+    return () => removeEventListener('keydown', closeOnEscape)
+  }, [confirmReset])
 
   const visiblePeople = draft.people.filter((person) => `${person.name} ${person.role}`.toLowerCase().includes(query.toLowerCase()))
   const loads = draft.people.flatMap((person) => draft.weeks.map((week) => ({ person, week, load: getLoad(person, week.id, draft.allocations) })))
@@ -57,10 +68,25 @@ export default function App() {
   }
 
   const reset = () => {
+    setResetSnapshot({ baseline: clonePlan(baseline), draft: clonePlan(draft) })
     const next = clonePlan(samplePlan)
     setBaseline(next)
     setDraft(clonePlan(next))
     try { localStorage.removeItem(STORAGE_KEY); setWarning('') } catch { setWarning('Browser storage is unavailable. The sample plan is restored for this tab.') }
+  }
+
+  const restoreReset = () => {
+    if (!resetSnapshot) return
+    const restoredBaseline = clonePlan(resetSnapshot.baseline)
+    setBaseline(restoredBaseline)
+    setDraft(clonePlan(resetSnapshot.draft))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, baseline: restoredBaseline, savedAt: new Date().toISOString() }))
+      setWarning('')
+    } catch {
+      setWarning('Browser storage is unavailable. The restored plan remains in this tab, but it cannot be saved for later.')
+    }
+    setResetSnapshot(null)
   }
 
   const exportPlan = () => {
@@ -91,8 +117,9 @@ export default function App() {
           <section className="page-head">
             <div><p className="eyebrow">Planning cycle · Q4 launch window</p><h1>Capacity, without the guesswork.</h1><p>Allocate person-days against real availability. Draft changes stay separate until you apply them.</p></div>
             <div className="actions">
-              <button className="button secondary" onClick={() => setDraft(clonePlan(baseline))} disabled={!changes}><RotateCcw size={17} />Undo draft</button>
-              <button className="button primary" onClick={applyDraft} disabled={!changes}><Check size={17} />{saved ? 'Applied' : `Apply draft${changes ? ` · ${changes}` : ''}`}</button>
+              <button className="button secondary" title={changes ? 'Discard draft edits and restore the applied baseline.' : 'No draft changes to undo.'} onClick={() => setDraft(clonePlan(baseline))} disabled={!changes}><RotateCcw size={17} />Undo draft</button>
+              <button className="button primary" title={changes ? 'Save this draft as the applied plan for this browser.' : 'Change a draft allocation or constraint before applying.'} onClick={applyDraft} disabled={!changes}><Check size={17} />{saved ? 'Applied' : `Apply draft${changes ? ` · ${changes}` : ''}`}</button>
+              {!changes && <p className="action-help">Edit an allocation or constraint to enable draft actions.</p>}
             </div>
           </section>
 
@@ -133,11 +160,12 @@ export default function App() {
           <section className="initiative-strip"><div><p className="eyebrow">Portfolio impact</p><h2>What the draft means for each initiative</h2></div>{draft.initiatives.map((initiative) => { const impact = initiativeImpact(draft, initiative); return <article key={initiative.id}><i style={{ background: initiative.tone }} /><span><b>{initiative.name}</b><small>{impact.total} person-days planned</small></span><em className={impact.atRisk ? 'risk' : 'clear'}>{impact.atRisk ? 'Capacity risk' : 'Covered'}</em></article> })}</section>
         </>}
 
-        {view === 'scenarios' && <section className="narrative-page"><p className="eyebrow">Scenario control</p><h1>Baseline and draft stay distinct.</h1><p className="lede">The applied baseline is this browser's point of reference. Your draft contains {changes} changed allocation {changes === 1 ? 'cell' : 'cells'} and can be reset without altering the baseline.</p><div className="comparison"><article><span>01</span><h2>Applied baseline</h2><strong>{baseline.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>The last scenario explicitly applied in this browser.</p></article><article className="draft-card"><span>02</span><h2>Working draft</h2><strong>{draft.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>{changes ? `${changes} edits are waiting for review.` : 'No uncommitted allocation edits.'}</p></article></div><div className="scenario-actions"><button className="button secondary" onClick={reset}><RotateCcw size={17} />Reset sample data</button><button className="button primary" onClick={exportPlan}><Download size={17} />Export draft JSON</button></div></section>}
+        {view === 'scenarios' && <section className="narrative-page"><p className="eyebrow">Scenario control</p><h1>Baseline and draft stay distinct.</h1><p className="lede">The applied baseline is this browser's point of reference. Your draft contains {changes} changed allocation {changes === 1 ? 'cell' : 'cells'} and can be reset without altering the baseline.</p><div className="comparison"><article><span>01</span><h2>Applied baseline</h2><strong>{baseline.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>The last scenario explicitly applied in this browser.</p></article><article className="draft-card"><span>02</span><h2>Working draft</h2><strong>{draft.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>{changes ? `${changes} edits are waiting for review.` : 'No uncommitted allocation edits.'}</p></article></div><div className="scenario-actions"><button className="button secondary" onClick={() => setConfirmReset(true)}><RotateCcw size={17} />Reset sample data</button><button className="button primary" onClick={exportPlan}><Download size={17} />Export draft JSON</button></div>{resetSnapshot && <div className="reset-recovery" role="status"><span>Sample data was restored.</span><button className="text-button" onClick={restoreReset}>Undo reset and restore the prior scenario</button></div>}</section>}
 
         {view === 'about' && <section className="narrative-page"><p className="eyebrow">Independent sample</p><h1>A planning interaction, built to be examined.</h1><p className="lede">Resource Radar is a fictional portfolio artifact for Northstar, a fictional B2B SaaS company. It runs entirely in your browser, uses no authentication or paid service, and makes no connection to a production system.</p><div className="about-grid"><article><h2>What it demonstrates</h2><p>Capacity arithmetic, visible constraints, editable allocations, scenario discipline, and initiative-level consequences.</p></article><article><h2>What it does not claim</h2><p>The names, initiatives, usage, and decisions are sample data. Proposed metrics in the product documents are targets, not measured outcomes.</p></article></div><a className="case-link" href="https://github.com/mvahedi2020/Resource-Radar/blob/main/docs/product/Case_Study.md">Read the product case study <ArrowUpRight size={18} /></a></section>}
       </main>
-      <footer><span>Northstar sample · Data stays on this device</span><button onClick={reset}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer></div>
+      <footer><span>Northstar sample · Data stays on this device</span><button onClick={() => setConfirmReset(true)}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer>
+      {confirmReset && <div className="reset-backdrop" role="presentation"><section className="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="reset-title"><p className="eyebrow">Reset sample plan</p><h2 id="reset-title">Restore the original fictional allocations?</h2><p>This replaces the applied baseline and working draft in this browser. Export the current draft first if you want to keep a copy.</p><div><button className="button secondary" ref={cancelResetRef} onClick={() => setConfirmReset(false)}>Keep current plan</button><button className="button primary" onClick={() => { reset(); setConfirmReset(false) }}>Reset sample data</button></div></section></div>}</div>
     </div>
   )
 }
