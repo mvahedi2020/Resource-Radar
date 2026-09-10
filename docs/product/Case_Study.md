@@ -6,9 +6,9 @@ Northstar is a fictional B2B SaaS company planning several launch initiatives ac
 
 Resource Radar makes that arithmetic visible. The working surface starts with people and weeks, subtracts time off and non-project commitments, then compares the remaining person-days with initiative allocations. Draft edits stay separate from the applied baseline so planning changes are deliberate and reversible.
 
-## My role
+## My role as Product Manager
 
-I defined the product concept, planning model, interaction requirements, information hierarchy, sample scenarios, acceptance criteria, and validation plan. Antigravity AI was used as the implementation partner for application code and supporting documentation. This is a portfolio demonstration, not a record of a shipped Northstar product or customer outcome.
+I defined the product concept, planning model, interaction requirements, information hierarchy, sample scenarios, acceptance criteria, and validation plan. Google Antigravity and other AI tools assisted with implementation and verification. This is a portfolio demonstration, not a record of a shipped Northstar product or customer outcome.
 
 ## Key decisions
 
@@ -20,4 +20,6 @@ I defined the product concept, planning model, interaction requirements, informa
 
 ## Proposed measures
 
-Targets for a future pilot would include a 30% reduction in time spent reconciling staffing inputs, 90% of planned work with an explicit owner and weekly allocation, and identification of all known zero-availability conflicts before a plan is approved. These are proposed targets; no user study or production measurement has been performed for this demo.
+Begin with five formative sessions to inspect conflict diagnosis and baseline-versus-draft understanding. The proposed diagnostic target is four of five evaluators correctly explaining a conflict within 60 seconds. A later ten-person study would test whether nine of ten can edit and apply a scenario without help. The sample must surface all known zero-availability assignments, without implying productivity or burnout diagnoses.
+
+See the [evaluation plan](Measures.md) for denominators and guardrails and the [validation plan](Validation.md) for the study sequence. These are proposed targets; no user study or production measurement has been performed.

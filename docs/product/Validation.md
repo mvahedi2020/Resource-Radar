@@ -14,7 +14,7 @@ Automated tests cover availability subtraction, zero-availability classification
 
 Conduct five moderated sessions with product operations or engineering planning practitioners. Ask each participant to identify Noah's unavailable week, rebalance an overloaded initiative, explain the difference between the baseline and draft, apply the draft, and export it.
 
-Measure task completion, time to first correct conflict diagnosis, error recovery, and confidence on a five-point scale. Proposed thresholds are 80% unassisted completion and a median diagnosis time below 60 seconds.
+Measure task completion, time to first correct conflict diagnosis, error recovery, and confidence on a five-point scale. The five sessions are formative: use them to identify failures before setting a completion threshold. A later ten-person study can test the proposed 90% unassisted edit-and-apply target in Measures.md; the initial diagnostic target is four of five correct conflict explanations within 60 seconds.
 
 ## Known limits
 

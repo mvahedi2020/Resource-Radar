@@ -2,7 +2,7 @@
 
 A product plan needs to fit the team's actual availability. This PM case study makes allocation tradeoffs visible before a commitment is made.
 
-**[Try the demo](https://mvahedi2020.github.io/Resource-Radar/)** · [Watch the workflow](docs/media/workflow.webm) · [Case study](docs/product/Case_Study.md)
+**[Try the demo](https://mvahedi2020.github.io/Resource-Radar/)** · [Product requirements](docs/product/PRD.md) · [Case study](docs/product/Case_Study.md) · [Evaluation plan](docs/product/Measures.md) · [Watch the workflow](docs/media/workflow.webm)
 
 ![Resource Radar weekly planning workspace](docs/media/screenshot.png)
 
@@ -12,7 +12,9 @@ Northstar, a fictional B2B SaaS company, has competing onboarding, account-insig
 
 ## My role
 
-This personal case study makes product definition, prioritization, requirements, workflow design and evaluation visible. The original prototype used Google Antigravity; this version's implementation and verification were assisted by AI tools. It is not a claim that I wrote the code or managed an engineering team.
+I owned the product work: problem framing, prioritization and tradeoffs, requirements, workflows, fictional sample-data design, acceptance criteria, and evaluation plan. [Start with the PM review packet](docs/product/PRD.md) for the product brief, decision rules, and testable acceptance criteria.
+
+Google Antigravity and other AI tools assisted with implementation and verification. This is not a claim that I manually wrote the application code or managed an engineering team.
 
 ## Product decisions
 
@@ -30,9 +32,9 @@ All people and initiatives are fictional. No integrations, collaboration, staffi
 
 ## Product evidence
 
-- [Case study](docs/product/Case_Study.md)
+- [Product requirements — problem, users, decisions, workflow, acceptance criteria, and proposed measures](docs/product/PRD.md)
+- [Case study — product framing and portfolio narrative](docs/product/Case_Study.md)
 - [Control matrix](docs/product/Control_Matrix.md)
-- [Requirements](docs/product/PRD.md)
 - [Proposed metrics and next research](docs/product/Measures.md)
 - [Commercial hypotheses](docs/product/GTM_Strategy.md)
 - [Implemented / next / later](docs/product/Sprint_Backlog.md)
