@@ -16,6 +16,10 @@ I owned the product work: problem framing, prioritization and tradeoffs, require
 
 Google Antigravity and other AI tools assisted with implementation and verification. This is not a claim that I manually wrote the application code or managed an engineering team.
 
+## PM review route
+
+Start with the [PRD](docs/product/PRD.md), then review [product decisions](docs/product/Product%20Decisions.md), [discovery](docs/product/Discovery%20Plan.md), [validation](docs/product/Validation.md), and [risks](docs/product/Product%20Risks.md). These show the product work I owned: framing the decision, choosing tradeoffs, defining a fictional workflow, and specifying evidence for the next investment. Implementation was AI-assisted; I am not presented as the manual application-code author.
+
 ## Product decisions
 
 | Choice | Rationale | Tradeoff |
