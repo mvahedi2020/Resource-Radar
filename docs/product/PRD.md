@@ -54,6 +54,16 @@ As a portfolio lead, I can see capacity, time off, operating commitments, and in
 
 Real-time collaboration, HRIS integration, time tracking, authentication, billing, automatic staffing recommendations, productivity scoring, and burnout diagnosis are outside this sample. Capacity risk must not be presented as a delivery forecast or a recommendation to change a person’s work.
 
+## Acceptance examples and edge conditions
+
+| Situation | Expected current behavior | Meaning |
+| --- | --- | --- |
+| Time off plus commitments exceed capacity | Available days stop at zero; inputs remain visible. | No negative availability is implied. |
+| A zero-availability person has allocation | The cell is a conflict and related initiative is at risk. | Capacity signal, not a delivery forecast. |
+| Allocation is below zero or above 10 | Planning logic bounds it to 0–10; controls use 0.5-day steps. | Inputs remain in documented range. |
+| Draft edit is undone | Draft returns to baseline; baseline stays unchanged. | Reversibility supports review. |
+| Storage is blocked | Current tab works and explains it cannot save later. | Persistence is not required to inspect. |
+
 ## Evaluation plan — proposed, not measured
 
 Research is staged. First, conduct five moderated formative sessions with product operations or engineering-planning practitioners. Participants use the same seeded Northstar scenario to identify Noah’s unavailable week, rebalance work, explain baseline versus draft, apply a choice, and export it. Use these sessions to identify usability failures and refine the task before applying a quantitative completion target in a later ten-person study.
