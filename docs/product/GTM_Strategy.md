@@ -11,6 +11,14 @@ It is positioned against spreadsheet-plus-meeting workflows where availability a
 - Primary: portfolio leads, product operations, and engineering managers at B2B SaaS companies.
 - Secondary: initiative owners who need a clear view of staffing assumptions.
 
+## User versus funding decision
+
+The planning participant needs to explain the effect of a constraint or allocation. A potential sponsor would be the product operations or engineering leader responsible for the planning process, who would need evidence that the review is worth changing. This is a buying-role hypothesis, not a validated purchasing process.
+
+Before discussing packaging, ask who currently owns the planning process, what recurring decision is difficult, and what would justify adopting another tool. Compare the prototype with the team's existing spreadsheet and meeting practice. If participants understand the arithmetic but see no reason to change that practice, a new planning application may not be the right investment.
+
+A future pilot should first establish a baseline for explanation errors and the effort of resolving a known conflict. Any time-saving or commercial claim requires observed evidence; the sample does not demonstrate ROI, willingness to pay, or a staffing recommendation.
+
 ## Pilot motion
 
 First complete five formative sessions using the seeded fictional scenario. If the model is understood, consider three to five internal planning teams for a four-week assisted pilot with an agreed data boundary.
