@@ -12,9 +12,13 @@ Automated tests cover availability subtraction, zero-availability classification
 
 ## Proposed user validation
 
-Conduct five moderated sessions with product operations or engineering planning practitioners. Ask each participant to identify Noah's unavailable week, rebalance an overloaded initiative, explain the difference between the baseline and draft, apply the draft, and export it.
+Conduct five moderated formative sessions with product operations or engineering-planning practitioners. Ask each participant to identify the seeded scenario's unavailable week, rebalance an overloaded initiative, explain baseline versus draft, apply it, and export it. Named sample people are fictional fixtures, not research participants.
 
-Measure task completion, time to first correct conflict diagnosis, error recovery, and confidence on a five-point scale. The five sessions are formative: use them to identify failures before setting a completion threshold. A later ten-person study can test the proposed 90% unassisted edit-and-apply target in Measures.md; the initial diagnostic target is four of five correct conflict explanations within 60 seconds.
+Measure task completion, correct diagnosis time, recovery, and five-point confidence. Retain all five formative participants in the diagnostic denominator. A later ten-person study tests 90% unassisted edit-and-apply as successes out of all 10; record abandonment and assistance separately.
+
+## Scoring protocol
+
+An explanation passes only when it names time off or non-project commitments and connects remaining availability to competing allocation; naming color alone does not pass. Edit-and-apply passes only when a participant changes an input, distinguishes draft from baseline, and deliberately applies without help. This evaluates workflow comprehension, not demand or business value.
 
 ## Known limits
 
