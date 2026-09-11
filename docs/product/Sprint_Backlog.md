@@ -11,11 +11,16 @@
 
 ## Candidate next sprint
 
-1. Add an accessible editor for time off and non-project commitments.
-2. Add scenario naming and a local scenario history.
-3. Add import validation for a documented CSV format.
-4. Test matrix navigation with screen-reader and keyboard-only participants.
-5. Explore initiative date shifts after allocation conflicts are resolved.
+Prioritize only after formative sessions show that the existing seeded workflow is understood.
+
+1. Test matrix navigation with screen-reader and keyboard-only participants.
+2. Add scenario naming and local history if repeated planning-review need is observed.
+3. Define a CSV import only if setup becomes a validated barrier and data-quality/privacy needs are decided.
+4. Explore date shifts only after users diagnose allocation conflict; the current signal does not forecast dates.
+
+## Non-goals for this increment
+
+Do not add staffing recommendations, productivity scores, burnout conclusions, shared editing, or real-system connections. Each changes the decision boundary and needs separate evidence.
 
 ## Later, subject to validation
 
