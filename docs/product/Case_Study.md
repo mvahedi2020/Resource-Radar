@@ -23,3 +23,7 @@ I defined the product concept, planning model, interaction requirements, informa
 Begin with five formative sessions to inspect conflict diagnosis and baseline-versus-draft understanding. The proposed diagnostic target is four of five evaluators correctly explaining a conflict within 60 seconds. A later ten-person study would test whether nine of ten can edit and apply a scenario without help. The sample must surface all known zero-availability assignments, without implying productivity or burnout diagnoses.
 
 See the [evaluation plan](Measures.md) for denominators and guardrails and the [validation plan](Validation.md) for the study sequence. These are proposed targets; no user study or production measurement has been performed.
+
+## Evidence limits and next investment decision
+
+The sample demonstrates inspectable arithmetic and controls; repository checks are software evidence only. It does not show practitioner understanding, adoption, or delivery outcomes. The next decision is whether five formative sessions show that participants can explain a conflict and intentionally move from draft to applied plan. If they cannot, simplify the workflow before investing in history, import, or shared-system concepts. Review the [discovery plan](Discovery%20Plan.md), [decision record](Product%20Decisions.md), [risk register](Product%20Risks.md), and [validation plan](Validation.md).
