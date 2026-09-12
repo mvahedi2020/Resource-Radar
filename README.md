@@ -14,7 +14,7 @@ Northstar, a fictional B2B SaaS company, has competing onboarding, account-insig
 
 I owned the product work: problem framing, prioritization and tradeoffs, requirements, workflows, fictional sample-data design, acceptance criteria, and evaluation plan. [Start with the PM review packet](docs/product/PRD.md) for the product brief, decision rules, and testable acceptance criteria.
 
-Google Antigravity and other AI tools assisted with implementation and verification. This is not a claim that I manually wrote the application code or managed an engineering team.
+AI tools assisted with implementation and verification. This is not a claim that I manually wrote the application code or managed an engineering team.
 
 ## PM review route
 

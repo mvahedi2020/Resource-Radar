@@ -8,7 +8,7 @@ Resource Radar makes that arithmetic visible. The working surface starts with pe
 
 ## My role as Product Manager
 
-I defined the product concept, planning model, interaction requirements, information hierarchy, sample scenarios, acceptance criteria, and validation plan. Google Antigravity and other AI tools assisted with implementation and verification. This is a portfolio demonstration, not a record of a shipped Northstar product or customer outcome.
+I defined the product concept, planning model, interaction requirements, information hierarchy, sample scenarios, acceptance criteria, and validation plan. AI tools assisted with implementation and verification. This is a portfolio demonstration, not a record of a shipped Northstar product or customer outcome.
 
 ## Key decisions
 
