@@ -6,17 +6,17 @@ Northstar is a fictional B2B SaaS company planning several launch initiatives ac
 
 Resource Radar makes that arithmetic visible. The working surface starts with people and weeks, subtracts time off and non-project commitments, then compares the remaining person-days with initiative allocations. Draft edits stay separate from the applied baseline so planning changes are deliberate and reversible.
 
+## Decision brief
+
+| Decision | Chosen compromise and cost | Evidence needed for the next investment |
+| --- | --- | --- |
+| Make a constrained plan reviewable before a commitment | Use a browser-local, four-week fictional scenario rather than a connected staffing system. It makes the arithmetic inspectable but cannot represent a team's source of truth. | Five formative participants can explain why a seeded conflict exists and distinguish an editable draft from the applied plan. |
+| Preserve choice instead of recommending a person or date | Show allocation consequences and initiative risk without choosing who should move work. This leaves the planning conversation with the team. | Participants use the consequence to reason about a tradeoff without reading it as a delivery forecast. |
+| Require an explicit apply action | Keep a draft separate from the baseline. The extra step adds friction, but avoids treating exploration as a commitment. | Participants can intentionally apply or undo a scenario without believing a draft silently changed the plan. |
+
 ## My role as Product Manager
 
 I defined the product concept, planning model, interaction requirements, information hierarchy, sample scenarios, acceptance criteria, and validation plan. AI tools assisted with implementation and verification. This is a portfolio demonstration, not a record of a shipped Northstar product or customer outcome.
-
-## Key decisions
-
-- Use person-days instead of percentages to make weekly tradeoffs concrete.
-- Show time off and non-project commitments beside the resulting availability.
-- Preserve baseline and draft scenarios until the user explicitly applies a draft.
-- Roll individual overloads up to initiative impact so staffing risk has product context.
-- Keep persistence device-local and offer JSON export for inspection.
 
 ## Proposed measures
 
