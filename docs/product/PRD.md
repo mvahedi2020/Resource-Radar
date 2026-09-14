@@ -64,6 +64,12 @@ Real-time collaboration, HRIS integration, time tracking, authentication, billin
 | Draft edit is undone | Draft returns to baseline; baseline stays unchanged. | Reversibility supports review. |
 | Storage is blocked | Current tab works and explains it cannot save later. | Persistence is not required to inspect. |
 
+## Enforced behavior versus planning guidance
+
+The sample enforces arithmetic and state boundaries: it bounds allocation and constraint inputs, calculates availability from the displayed inputs, marks zero-availability or overloaded person-weeks, keeps draft changes out of the baseline until Apply, and keeps export local. It does not enforce a staffing recommendation, a scope decision, a delivery date, or a claim that a visible risk will occur. Those are planning judgments for the people using the scenario.
+
+For example, setting Noah's Sep 28 Signal allocation to zero removes that allocation from an unavailable week in the draft. The interface can show the resulting capacity change; it cannot determine whether the work should move to another week, another person, or out of the initiative. This boundary is an acceptance condition for product interpretation, not a missing calculation.
+
 ## Evaluation plan — proposed, not measured
 
 Research is staged. First, conduct five moderated formative sessions with product operations or engineering-planning practitioners. Participants use the same seeded Northstar scenario to identify Noah’s unavailable week, rebalance work, explain baseline versus draft, apply a choice, and export it. Use these sessions to identify usability failures and refine the task before applying a quantitative completion target in a later ten-person study.
