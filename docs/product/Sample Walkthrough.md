@@ -4,7 +4,7 @@ This walkthrough uses only the fictional Northstar plan. It demonstrates the dec
 
 ## Start with the seeded constraint
 
-Start from the seeded plan by choosing **Reset sample** if the browser contains earlier local changes; reset replaces the saved local scenario with the fictional fixtures. Open **Plan** and find **Noah Williams** in the **Sep 28** column. His weekly capacity is 5 person-days, time off is 5, and non-project commitments are 0. The result is **0 available**. The same cell still includes **1 day** of Signal accounts work, so the planning surface marks the person-week as a conflict and Signal accounts as at risk.
+Start from the seeded plan by choosing **Reset sample**, then **Reset sample data**, if the browser contains earlier local changes; the confirmation replaces the saved local scenario with the fictional fixtures. Open **Plan** and find **Noah Williams** in the **Sep 28** column. His weekly capacity is 5 person-days, time off is 5, and non-project commitments are 0. The result is **0 available**. The same cell still includes **1 day** of Signal accounts work, so the planning surface marks the person-week as a conflict and Signal accounts as at risk.
 
 The useful question is not “can the dashboard make the work fit?” It is “what choice should the planning group inspect before making a commitment?” The zero availability is a capacity signal. It does not predict a missed date or identify a person who should absorb the work.
 
