@@ -23,6 +23,14 @@ A future pilot should first establish a baseline for explanation errors and the 
 
 First complete five formative sessions using the seeded fictional scenario. If the model is understood, consider three to five internal planning teams for a four-week assisted pilot with an agreed data boundary.
 
+## Decision tests before a pilot
+
+| Decision maker | Decision to test | Evidence that permits the next step | Stop condition |
+| --- | --- | --- | --- |
+| Planning participant | Is the capacity explanation useful beside the current method? | The participant can explain the seeded constraint, its initiative consequence, and the draft boundary without assistance. | The participant understands the math but prefers the existing method because it serves the same decision with less effort. |
+| Product operations or engineering sponsor | Is a bounded pilot worth funding? | A recurring planning decision is documented, the current process has a defined comparison baseline, and an owner agrees to a data boundary. | There is no recurring problem, no accountable sponsor, or no acceptable boundary for planning data. |
+| Product team | Should the sample gain shared or imported data? | Formative work shows comprehension, and a concrete handoff need includes provenance, permissions, and recovery expectations. | The next request is only for feature breadth or an automated staffing answer. |
+
 ## Message
 
 “See the days you actually have before you commit the work.” The proof points should focus on visible constraint math, reversible scenario planning, and initiative impact.
