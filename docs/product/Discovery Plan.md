@@ -12,7 +12,9 @@ Before extending this browser-local planning sample, determine whether the perso
 
 ## Neutral research tasks
 
-Recruit product operations and engineering-planning practitioners who regularly review capacity. In a moderated session, give each person the seeded Northstar scenario and ask them to locate an unavailable week, explain the inputs, make a half-day reallocation, compare the draft with the baseline, apply or undo it, and export a discussion copy. Ask what they expected each state to mean before explaining it; avoid leading them toward the intended interpretation.
+Recruit consenting product operations and engineering-planning practitioners who regularly review capacity. In a moderated session, give each person the seeded Northstar scenario and ask them to locate an unavailable week, explain the inputs, make a half-day reallocation, compare the draft with the baseline, apply or undo it, and export a discussion copy. Ask what they expected each state to mean before explaining it; avoid calling the sample clearer, safer, or more accurate.
+
+Ask half of the five participants to describe their current spreadsheet or meeting method before using the sample and the other half afterward. This counterbalances an early description from anchoring how they interpret the fictional interface. Do not collect a real staffing plan or confidential work details. Participation and permission to record are separate choices; retain only the notes required for the stated study.
 
 ## Falsification and next decision
 
