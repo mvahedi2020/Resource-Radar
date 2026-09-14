@@ -10,7 +10,7 @@ The useful question is not “can the dashboard make the work fit?” It is “w
 
 ## Make an explicit draft choice
 
-Change **Noah Williams, Signal accounts, Sep 28 person-days** from **1** to **0**. Allocation fields accept 0–10 person-days in half-day increments, so the sample supports a precise change without inventing a recommendation. The draft now removes work from an unavailable week and the related initiative-risk signal updates.
+Change **Noah Williams, Signal accounts, Sep 28 person-days** from **1** to **0**. Allocation fields accept 0–10 person-days in half-day increments, so the sample supports a precise change without inventing a recommendation. Zero removes that allocation entry; the field appears empty with a “0” placeholder. The draft removes the assigned day, but Noah still has zero available days because time off is unchanged. The initiative-risk summary recalculates.
 
 This is a tradeoff: removing the day resolves Noah's Sep 28 conflict in this scenario, but it does not establish where the work goes or whether the initiative should retain its scope. Signal accounts can remain at risk because its other allocations include a separate overloaded person-week. A planning lead can use the draft to compare options, then discuss deferral, a different week, or a different allocation with the people who own the work.
 
