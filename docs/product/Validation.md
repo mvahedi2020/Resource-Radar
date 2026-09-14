@@ -20,6 +20,10 @@ Measure task completion, correct diagnosis time, recovery, and five-point confid
 
 An explanation passes only when it names time off or non-project commitments and connects remaining availability to competing allocation; naming color alone does not pass. Edit-and-apply passes only when a participant changes an input, distinguishes draft from baseline, and deliberately applies without help. This evaluates workflow comprehension, not demand or business value.
 
+For the five formative sessions, retain every started task in the notes, including an abandonment, an assisted attempt, or a participant who declines to apply the fictional draft. For the later ten-person study, use all 10 enrolled participants as the denominator for conflict explanation and unassisted edit-and-apply; report help and abandonment alongside the numerator rather than dropping either result.
+
+Stop expansion and return to the conflict explanation if participants repeatedly think zero availability is a delivery prediction, cannot say which inputs caused the conflict, or believe a draft changed the baseline before Apply. Do not add shared planning, imports, or automated recommendations until the workflow boundary is understood in the formative sessions.
+
 ## Known limits
 
 The dataset is fictional, persistence is browser-local, and no integrations or multi-user behavior are represented. The current sample does not establish usability, demand, or business impact.
