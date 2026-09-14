@@ -12,13 +12,11 @@ Northstar, a fictional B2B SaaS company, has competing onboarding, account-insig
 
 ## My role
 
-I owned the product work: problem framing, prioritization and tradeoffs, requirements, workflows, fictional sample-data design, acceptance criteria, and evaluation plan. [Start with the PM review packet](docs/product/PRD.md) for the product brief, decision rules, and testable acceptance criteria.
-
-AI tools assisted with implementation and verification. This is not a claim that I manually wrote the application code or managed an engineering team.
+I was the Product Manager responsible for problem framing, prioritization and tradeoffs, requirements, workflows, fictional sample-data design, acceptance criteria, and the evaluation plan. AI tools assisted with implementation and verification; this does not claim that I manually wrote the application code or managed an engineering team.
 
 ## PM review route
 
-Start with the [PRD](docs/product/PRD.md), then review [product decisions](docs/product/Product%20Decisions.md), [discovery](docs/product/Discovery%20Plan.md), [validation](docs/product/Validation.md), and [risks](docs/product/Product%20Risks.md). These show the product work I owned: framing the decision, choosing tradeoffs, defining a fictional workflow, and specifying evidence for the next investment. Implementation was AI-assisted; I am not presented as the manual application-code author.
+Review the [decision brief](docs/product/Case_Study.md#decision-brief), then the [seeded walkthrough](docs/product/Sample%20Walkthrough.md), [PRD](docs/product/PRD.md), and [evidence plan](docs/product/Measures.md). [Product decisions](docs/product/Product%20Decisions.md), [discovery](docs/product/Discovery%20Plan.md), and [validation](docs/product/Validation.md) show the alternatives, research method, and conditions for the next investment.
 
 ## Product decisions
 
@@ -38,6 +36,7 @@ All people and initiatives are fictional. No integrations, collaboration, staffi
 
 - [Product requirements — problem, users, decisions, workflow, acceptance criteria, and proposed measures](docs/product/PRD.md)
 - [Case study — product framing and portfolio narrative](docs/product/Case_Study.md)
+- [Sample walkthrough — inspect a seeded capacity tradeoff](docs/product/Sample%20Walkthrough.md)
 - [Control matrix](docs/product/Control_Matrix.md)
 - [Proposed metrics and next research](docs/product/Measures.md)
 - [Commercial hypotheses](docs/product/GTM_Strategy.md)
