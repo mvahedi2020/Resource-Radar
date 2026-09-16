@@ -16,6 +16,12 @@ Conduct five moderated formative sessions with product operations or engineering
 
 Measure task completion, correct diagnosis time, recovery, and five-point confidence. Retain all five formative participants in the diagnostic denominator. A later ten-person study tests 90% unassisted edit-and-apply as successes out of all 10; record abandonment and assistance separately.
 
+## Moderator answer key for the seeded task
+
+The expected diagnosis is **Noah Williams, Sep 28**: 5 person-days of weekly capacity minus 5 days of time off and 0 days of other commitments leaves 0 available days, while 1 person-day remains allocated to Signal accounts. A person-day is the planning unit, not a headcount or a delivery estimate; inputs support 0.5-day increments. A participant may choose any defensible fictional tradeoff, but a 1-day removal from Noah's Signal allocation must be described accurately: it clears that assigned day without restoring his availability, and it does not prove that Signal accounts is free of other capacity risk.
+
+For the state-boundary task, the participant must identify the edit as a draft, then either Apply it to retain the local baseline or Undo it to restore that baseline. Do not score a preferred allocation as correct; score the availability calculation, the stated tradeoff, and whether the participant distinguishes draft from applied state.
+
 ## Scoring protocol
 
 An explanation passes only when it names time off or non-project commitments and connects remaining availability to competing allocation; naming color alone does not pass. Edit-and-apply passes only when a participant changes an input, distinguishes draft from baseline, and deliberately applies without help. This evaluates workflow comprehension, not demand or business value.
