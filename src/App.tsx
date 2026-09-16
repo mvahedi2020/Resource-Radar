@@ -119,7 +119,7 @@ export default function App() {
             <div className="actions">
               <button className="button secondary" title={changes ? 'Discard draft edits and restore the applied baseline.' : 'No draft changes to undo.'} onClick={() => setDraft(clonePlan(baseline))} disabled={!changes}><RotateCcw size={17} />Undo draft</button>
               <button className="button primary" title={changes ? 'Save this draft as the applied plan for this browser.' : 'Change a draft allocation or constraint before applying.'} onClick={applyDraft} disabled={!changes}><Check size={17} />{saved ? 'Applied' : `Apply draft${changes ? ` · ${changes}` : ''}`}</button>
-              {!changes && <p className="action-help">Edit an allocation or constraint to enable draft actions.</p>}
+              <p className="action-help">{changes ? 'Review the draft, then Apply to retain it in this browser or Undo to restore the applied plan.' : 'Edit an allocation or constraint to enable draft actions. Drafts are not retained on refresh until you Apply.'}</p>
             </div>
           </section>
 
