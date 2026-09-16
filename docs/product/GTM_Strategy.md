@@ -21,11 +21,7 @@ A future pilot should first establish a baseline for explanation errors and the 
 
 ## Pilot motion
 
-First complete five formative sessions using the seeded fictional scenario. If the model is understood, consider three to five internal planning teams for a four-week assisted pilot with an agreed data boundary.
-
-## Pilot value and cost decision
-
-Before inviting a team, name one sponsor who owns the recurring planning review, the participant time the pilot will consume, and the current-method comparison to preserve. The pilot question is whether the team can inspect and resolve a known capacity tradeoff with enough additional clarity to justify that effort; it is not a pricing, ROI, or time-saved claim. Exit if the sponsor cannot name a recurring decision, participants need the same or less context from the existing process, or a minimal data boundary cannot be agreed.
+First complete five formative sessions using the seeded fictional scenario. If the model is understood, consider three to five internal planning teams for a four-week assisted pilot with an agreed data boundary. Before inviting a team, name one sponsor who owns the recurring planning review, the participant time the pilot will consume, and the current-method comparison to preserve. The pilot question is whether the team can inspect and resolve a known capacity tradeoff with enough additional clarity to justify that effort; it is not a pricing, ROI, or time-saved claim. Exit if the sponsor cannot name a recurring decision, participants need the same or less context from the existing process, or a minimal data boundary cannot be agreed.
 
 ## Decision tests before a pilot
 
@@ -42,7 +38,7 @@ Before inviting a team, name one sponsor who owns the recurring planning review,
 ## Proposed launch gates
 
 - Complete five formative sessions and address material comprehension failures before a threshold.
-- In a later ten-person task study, test the proposed 90% unassisted edit-and-apply target with all 10 retained in the denominator.
+- In a later ten-person task study, test the proposed 90% unassisted edit-and-apply target using the consent-aware denominator in [Measures.md](Measures.md).
 - No severity-one errors in capacity calculations.
 - A documented data import path and privacy review before any real customer pilot.
 

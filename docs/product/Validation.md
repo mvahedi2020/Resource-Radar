@@ -14,7 +14,7 @@ Automated tests cover availability subtraction, zero-availability classification
 
 Conduct five moderated formative sessions with product operations or engineering-planning practitioners. Ask each participant to identify the seeded scenario's unavailable week, rebalance an overloaded initiative, explain baseline versus draft, apply it, and export it. Named sample people are fictional fixtures, not research participants.
 
-Measure task completion, correct diagnosis time, recovery, and five-point confidence. Retain all five formative participants in the diagnostic denominator. A later ten-person study tests 90% unassisted edit-and-apply as successes out of all 10; record abandonment and assistance separately.
+Measure task completion, correct diagnosis time, recovery, and five-point confidence. Apply the consent-withdrawal rule in [Measures.md](Measures.md): retain assisted and abandoned attempts, but do not retain a withdrawn participant's performance. A later ten-person study tests 90% unassisted edit-and-apply as successes out of 10 consented, started, non-withdrawn records; record abandonment and assistance separately.
 
 ## Moderator answer key for the seeded task
 
@@ -26,7 +26,7 @@ For the state-boundary task, the participant must identify the edit as a draft, 
 
 An explanation passes only when it names time off or non-project commitments and connects remaining availability to competing allocation; naming color alone does not pass. Edit-and-apply passes only when a participant changes an input, distinguishes draft from baseline, and deliberately applies without help. This evaluates workflow comprehension, not demand or business value.
 
-For the five formative sessions, retain every started task in the notes, including an abandonment, an assisted attempt, or a participant who declines to apply the fictional draft. For the later ten-person study, use all 10 enrolled participants as the denominator for conflict explanation and unassisted edit-and-apply; report help and abandonment alongside the numerator rather than dropping either result.
+For the five formative sessions, retain every started task in the notes, including an abandonment, an assisted attempt, or a participant who declines to apply the fictional draft, subject to the consent-withdrawal rule in [Measures.md](Measures.md). For the later ten-person study, use all 10 consented, started, non-withdrawn records as the denominator for conflict explanation and unassisted edit-and-apply; report help and abandonment alongside the numerator rather than dropping either result.
 
 Stop expansion and return to the conflict explanation if participants repeatedly think zero availability is a delivery prediction, cannot say which inputs caused the conflict, or believe a draft changed the baseline before Apply. Do not add shared planning, imports, or automated recommendations until the workflow boundary is understood in the formative sessions.
 
