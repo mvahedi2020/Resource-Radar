@@ -35,6 +35,18 @@ test('edits, applies, and compares a resource scenario', async ({ page }) => {
   await expect(page.getByText('No uncommitted allocation edits.')).toBeVisible()
 })
 
+test('keeps Noah unavailable when a zero-value draft allocation is cleared', async ({ page }) => {
+  const signal = page.getByLabel('Noah Williams, Signal accounts, Sep 28 person-days')
+  await expect(signal).toHaveValue('1')
+  await signal.fill('')
+  await expect(signal).toHaveValue('')
+  await expect(page.getByLabel('Noah Williams, Sep 28: 0 assigned of 0 available days')).toBeVisible()
+  await expect(page.getByText('Capacity risk').first()).toBeVisible()
+
+  await page.reload()
+  await expect(signal).toHaveValue('1')
+})
+
 test('reports a no-results search state and recovers', async ({ page }) => {
   await page.getByPlaceholder('Find a team member').fill('nobody matches')
   await expect(page.getByRole('heading', { name: 'No team members found' })).toBeVisible()
