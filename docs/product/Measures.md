@@ -15,4 +15,6 @@ The leading signals are recurring confusion about availability arithmetic, treat
 
 Use the same task order for the first half of participants and counterbalance whether the current spreadsheet or meeting method is discussed before or after the sample for the second half. Do not prime participants by calling the interface clearer, safer, or more accurate. The comparison is qualitative until a separately designed study defines a valid baseline.
 
+Consent withdrawal is not an unsuccessful task. If a participant withdraws permission, delete their study material and report only the withdrawal count and study phase, without retaining their performance. Do not silently replace a withdrawn participant or remove an assisted or abandoned attempt. A 10-person threshold result requires 10 consented, started, non-withdrawn task records under the same protocol; otherwise treat the run as formative and repeat a complete cohort before making a threshold decision.
+
 Automated checks test arithmetic and controls, not market demand. Automatic staffing recommendations remain rejected because they obscure uncertainty; real delivery estimates still require the appropriate planning and engineering discussion.
