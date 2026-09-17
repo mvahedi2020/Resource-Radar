@@ -1,5 +1,9 @@
 # Validation plan
 
+## Observed implementation checks, September 16, 2026
+
+On Node 24/macOS, lint, strict type checks, production build, eight unit tests, and four repository browser tests passed. `npm audit --omit=dev` reported no vulnerabilities. The unit suite now includes malformed browser-save inputs so a partial, invalid, or unknown allocation cannot be restored into the planning surface; the app falls back to the fictional sample with its existing storage warning.
+
 ## Observed implementation checks, September 8, 2026
 
 Lint, strict type checks, production build and five unit tests passed on Node 24/macOS. Two repository browser tests passed. An additional headless Chrome walkthrough verified zero-capacity reallocation, baseline versus draft, apply and refresh persistence, undo, JSON download, about/back navigation, sample reset, mobile search at 390 × 844 with no page overflow, and blocked-storage fallback. No page errors were captured. npm audit reported no vulnerabilities.
