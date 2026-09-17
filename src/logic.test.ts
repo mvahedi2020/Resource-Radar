@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { samplePlan } from './data'
-import { changedCells, getLoad, initiativeImpact, setAllocation, setConstraint } from './logic'
+import { changedCells, getLoad, initiativeImpact, isPlan, setAllocation, setConstraint } from './logic'
 
 describe('resource plan calculations', () => {
   it('subtracts time off and commitments before judging load', () => {
@@ -25,5 +25,12 @@ describe('resource plan calculations', () => {
     expect(samplePlan.people[0].timeOff.sep14).toBe(0)
     expect(getLoad(edited.people[0], 'sep14', edited.allocations).available).toBe(2)
     expect(changedCells(samplePlan, edited)).toBe(1)
+  })
+
+  it('accepts a complete plan and rejects malformed saved planning data', () => {
+    expect(isPlan(samplePlan)).toBe(true)
+    expect(isPlan({ ...samplePlan, people: [{ id: 'maya' }] })).toBe(false)
+    expect(isPlan({ ...samplePlan, allocations: [{ personId: 'unknown', initiativeId: 'atlas', weekId: 'sep14', days: 1 }] })).toBe(false)
+    expect(isPlan({ ...samplePlan, allocations: [{ personId: 'maya', initiativeId: 'atlas', weekId: 'sep14', days: Number.NaN }] })).toBe(false)
   })
 })

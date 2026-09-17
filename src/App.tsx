@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, ArrowUpRight, CalendarDays, Check, Download, RotateCcw, Search, Users } from 'lucide-react'
 import { clonePlan, samplePlan } from './data'
-import { changedCells, getLoad, initiativeImpact, setAllocation, setConstraint } from './logic'
+import { changedCells, getLoad, initiativeImpact, isPlan, setAllocation, setConstraint } from './logic'
 import type { Plan } from './types'
 
 const STORAGE_KEY = 'northstar.resource-radar.plan.v1'
@@ -12,7 +12,7 @@ function readSaved(): { plan: Plan; warning: string } {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return { plan: clonePlan(samplePlan), warning: '' }
     const parsed = JSON.parse(raw) as { version: number; baseline: Plan }
-    if (parsed.version !== 1 || !parsed.baseline?.people || !parsed.baseline.allocations) throw new Error('Unsupported saved data')
+    if (parsed.version !== 1 || !isPlan(parsed.baseline)) throw new Error('Unsupported saved data')
     return { plan: parsed.baseline, warning: '' }
   } catch {
     return { plan: clonePlan(samplePlan), warning: 'Saved planning data could not be read. This session is using the sample plan.' }
