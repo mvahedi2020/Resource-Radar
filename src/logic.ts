@@ -6,6 +6,7 @@ const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<st
   const days = value[weekId]
   return isFiniteNumber(days) && days >= 0 && (maximum === undefined || days <= maximum[weekId])
 })
+const halfDay = (days: number, maximum: number) => Number.isFinite(days) ? Math.min(maximum, Math.max(0, Math.round(days * 2) / 2)) : 0
 
 export function isPlan(value: unknown): value is Plan {
   if (!isRecord(value) || !Array.isArray(value.weeks) || !Array.isArray(value.initiatives) || !Array.isArray(value.people) || !Array.isArray(value.allocations)) return false
@@ -43,7 +44,8 @@ export function getLoad(person: Person, weekId: string, allocations: Allocation[
 
 export function setAllocation(plan: Plan, personId: string, initiativeId: string, weekId: string, days: number): Plan {
   const allocations = plan.allocations.filter((a) => !(a.personId === personId && a.initiativeId === initiativeId && a.weekId === weekId))
-  if (days > 0) allocations.push({ personId, initiativeId, weekId, days: Math.max(0, Math.min(10, days)) })
+  const normalized = halfDay(days, 10)
+  if (normalized > 0) allocations.push({ personId, initiativeId, weekId, days: normalized })
   return { ...plan, allocations }
 }
 
@@ -52,7 +54,7 @@ export function setConstraint(plan: Plan, personId: string, weekId: string, fiel
     ...plan,
     people: plan.people.map((person) => person.id === personId ? {
       ...person,
-      [field]: { ...person[field], [weekId]: Math.max(0, Math.min(person.capacity[weekId] ?? 0, days)) },
+      [field]: { ...person[field], [weekId]: halfDay(days, person.capacity[weekId] ?? 0) },
     } : person),
   }
 }

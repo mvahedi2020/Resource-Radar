@@ -2,7 +2,7 @@
 
 ## Observed implementation checks, September 16, 2026
 
-On Node 24/macOS, lint, strict type checks, production build, eight unit tests, and four repository browser tests passed. `npm audit --omit=dev` reported no vulnerabilities. The unit suite now includes malformed browser-save inputs so a partial, invalid, or unknown allocation cannot be restored into the planning surface; the app falls back to the fictional sample with its existing storage warning.
+On Node 24/macOS, lint, strict type checks, production build, nine unit tests, and five repository browser tests passed. `npm audit --omit=dev` reported no vulnerabilities. The unit suite now includes malformed browser-save inputs so a partial, invalid, or unknown allocation cannot be restored into the planning surface; the app falls back to the fictional sample with its existing storage warning. Browser checks also confirm that entered planning values return to half-day increments.
 
 ## Observed implementation checks, September 8, 2026
 

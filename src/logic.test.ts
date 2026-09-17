@@ -19,6 +19,14 @@ describe('resource plan calculations', () => {
     expect(changedCells(samplePlan, edited)).toBe(1)
   })
 
+  it('normalizes planning inputs to the stated half-day unit', () => {
+    const allocation = setAllocation(samplePlan, 'maya', 'atlas', 'oct05', 1.26)
+    const constraint = setConstraint(samplePlan, 'maya', 'sep14', 'timeOff', 1.26)
+    expect(allocation.allocations.find((item) => item.personId === 'maya' && item.initiativeId === 'atlas' && item.weekId === 'oct05')?.days).toBe(1.5)
+    expect(constraint.people[0].timeOff.sep14).toBe(1.5)
+    expect(setConstraint(samplePlan, 'maya', 'sep14', 'timeOff', Number.NaN).people[0].timeOff.sep14).toBe(0)
+  })
+
   it('updates constraints without mutating the original plan', () => {
     const edited = setConstraint(samplePlan, 'maya', 'sep14', 'timeOff', 2)
     expect(edited.people[0].timeOff.sep14).toBe(2)

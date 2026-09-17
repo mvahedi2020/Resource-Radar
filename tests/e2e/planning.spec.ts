@@ -47,6 +47,12 @@ test('keeps Noah unavailable when a zero-value draft allocation is cleared', asy
   await expect(signal).toHaveValue('1')
 })
 
+test('keeps allocation edits on half-day planning increments', async ({ page }) => {
+  const cell = page.getByLabel('Maya Chen, Atlas onboarding, Oct 5 person-days')
+  await cell.fill('1.26')
+  await expect(cell).toHaveValue('1.5')
+})
+
 test('reports a no-results search state and recovers', async ({ page }) => {
   await page.getByPlaceholder('Find a team member').fill('nobody matches')
   await expect(page.getByRole('heading', { name: 'No team members found' })).toBeVisible()
