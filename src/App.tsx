@@ -44,9 +44,18 @@ export default function App() {
   useEffect(() => {
     if (!confirmReset) return
     cancelResetRef.current?.focus()
-    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setConfirmReset(false) }
-    addEventListener('keydown', closeOnEscape)
-    return () => removeEventListener('keydown', closeOnEscape)
+    const keepFocusInDialog = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setConfirmReset(false); return }
+      if (event.key !== 'Tab') return
+      const controls = [...(cancelResetRef.current?.closest('.reset-dialog')?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)') ?? [])]
+      const first = controls[0]
+      const last = controls.at(-1)
+      if (!first || !last) return
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+    }
+    addEventListener('keydown', keepFocusInDialog)
+    return () => removeEventListener('keydown', keepFocusInDialog)
   }, [confirmReset])
 
   const visiblePeople = draft.people.filter((person) => `${person.name} ${person.role}`.toLowerCase().includes(query.toLowerCase()))
