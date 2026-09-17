@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { samplePlan } from './data'
-import { changedCells, getLoad, initiativeImpact, isPlan, setAllocation, setConstraint } from './logic'
+import { changedCells, getLoad, initiativeImpact, isPlan, planChangeSummary, setAllocation, setConstraint } from './logic'
 
 describe('resource plan calculations', () => {
   it('subtracts time off and commitments before judging load', () => {
@@ -25,6 +25,12 @@ describe('resource plan calculations', () => {
     expect(samplePlan.people[0].timeOff.sep14).toBe(0)
     expect(getLoad(edited.people[0], 'sep14', edited.allocations).available).toBe(2)
     expect(changedCells(samplePlan, edited)).toBe(1)
+  })
+
+  it('separates allocation edits from availability edits in a draft summary', () => {
+    const withAllocation = setAllocation(samplePlan, 'maya', 'atlas', 'oct05', 2)
+    const withAvailability = setConstraint(setConstraint(withAllocation, 'maya', 'sep14', 'timeOff', 2), 'maya', 'sep14', 'commitments', 2)
+    expect(planChangeSummary(samplePlan, withAvailability)).toEqual({ allocationCells: 1, constraintCells: 1, total: 2 })
   })
 
   it('accepts a complete plan and rejects malformed saved planning data', () => {

@@ -32,7 +32,7 @@ test('edits, applies, and compares a resource scenario', async ({ page }) => {
 
   await page.getByRole('link', { name: 'Scenarios' }).click()
   await expect(page).toHaveURL(/#scenarios$/)
-  await expect(page.getByText('No uncommitted allocation edits.')).toBeVisible()
+  await expect(page.getByText('No uncommitted planning edits.')).toBeVisible()
 })
 
 test('keeps Noah unavailable when a zero-value draft allocation is cleared', async ({ page }) => {

@@ -57,7 +57,7 @@ export function initiativeImpact(plan: Plan, initiative: Initiative) {
   return { total, atRisk }
 }
 
-export function changedCells(baseline: Plan, draft: Plan): number {
+export function planChangeSummary(baseline: Plan, draft: Plan) {
   const value = (plan: Plan, key: string) => plan.allocations.find((a) => `${a.personId}:${a.initiativeId}:${a.weekId}` === key)?.days ?? 0
   const keys = new Set([...baseline.allocations, ...draft.allocations].map((a) => `${a.personId}:${a.initiativeId}:${a.weekId}`))
   const allocationChanges = [...keys].filter((key) => value(baseline, key) !== value(draft, key)).length
@@ -68,5 +68,9 @@ export function changedCells(baseline: Plan, draft: Plan): number {
       person.timeOff[week.id] !== original.timeOff[week.id] || person.commitments[week.id] !== original.commitments[week.id],
     ).length
   }, 0)
-  return allocationChanges + constraintChanges
+  return { allocationCells: allocationChanges, constraintCells: constraintChanges, total: allocationChanges + constraintChanges }
+}
+
+export function changedCells(baseline: Plan, draft: Plan): number {
+  return planChangeSummary(baseline, draft).total
 }
