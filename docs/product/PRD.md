@@ -47,8 +47,8 @@ As a portfolio lead, I can see capacity, time off, operating commitments, and in
 | Make constraints editable | Allocation values accept 0–10 person-days; time off and commitments accept values from zero through the person’s weekly capacity. The planning surface reflects the result immediately. |
 | Identify decision risk | A zero-availability or overloaded person-week is visible in both text and status treatment. Initiative summaries identify allocations that intersect with an overload. |
 | Preserve a safe planning state | Draft changes do not alter the applied baseline until Apply draft is selected. Undo restores the draft from that baseline; a reset confirmation restores the fictional sample and offers one-step recovery of the previous scenario. |
-| Support review and recovery | Search filters people by name or role and provides a recoverable empty state. The current draft can be exported as local JSON. A storage failure is explained and the current tab remains usable. |
-| Make the demo broadly inspectable | Hash navigation supports browser back and forward. Native labels, semantic table structure, visible focus treatment, keyboard controls, touch targets, and responsive horizontal planning access are provided. |
+| Support review and recovery | Search filters people by name or role and provides a recoverable empty state. The current draft can be exported as local JSON with its fictional boundary and allocation/availability change counts. A storage failure is explained and the current tab remains usable. |
+| Make the demo broadly inspectable | Hash navigation supports browser back and forward. Native labels, semantic table structure, visible focus treatment, keyboard controls, touch targets, and responsive horizontal planning access are provided; closing reset returns focus to its trigger. |
 
 ## Explicit non-goals
 
@@ -61,6 +61,7 @@ Real-time collaboration, HRIS integration, time tracking, authentication, billin
 | Time off plus commitments exceed capacity | Available days stop at zero; inputs remain visible. | No negative availability is implied. |
 | A zero-availability person has allocation | The cell is a conflict and related initiative is at risk. | Capacity signal, not a delivery forecast. |
 | Allocation is below zero or above 10 | Planning logic bounds it to 0–10; controls use 0.5-day steps. | Inputs remain in documented range. |
+| Saved data contains fractional units below 0.5 or ambiguous IDs | Reject the saved plan and show the known fictional sample. | Restored state must obey the same unit and identity contract as direct edits. |
 | Draft edit is undone | Draft returns to baseline; baseline stays unchanged. | Reversibility supports review. |
 | Storage is blocked | Current tab works and explains it cannot save later. | Persistence is not required to inspect. |
 
