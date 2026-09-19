@@ -48,5 +48,7 @@ describe('resource plan calculations', () => {
     expect(isPlan({ ...samplePlan, allocations: [{ personId: 'maya', initiativeId: 'atlas', weekId: 'sep14', days: Number.NaN }] })).toBe(false)
     expect(isPlan({ ...samplePlan, people: [{ ...samplePlan.people[0], capacity: { sep14: 5 } }, ...samplePlan.people.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, allocations: [...samplePlan.allocations, samplePlan.allocations[0]] })).toBe(false)
+    expect(isPlan({ ...samplePlan, people: [{ ...samplePlan.people[0], name: ' ' }, ...samplePlan.people.slice(1)] })).toBe(false)
+    expect(isPlan({ ...samplePlan, people: [samplePlan.people[0], { ...samplePlan.people[1], id: ` ${samplePlan.people[0].id.toUpperCase()} ` }, ...samplePlan.people.slice(2)] })).toBe(false)
   })
 })

@@ -2,6 +2,7 @@ import type { Allocation, Initiative, LoadCell, Person, Plan } from './types'
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
+const hasText = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
 const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<string, number>): value is Record<string, number> => isRecord(value) && [...weekIds].every((weekId) => {
   const days = value[weekId]
   return isFiniteNumber(days) && days >= 0 && (maximum === undefined || days <= maximum[weekId])
@@ -13,13 +14,16 @@ export function isPlan(value: unknown): value is Plan {
   const weeks = value.weeks
   const initiatives = value.initiatives
   const people = value.people
-  if (!weeks.every((week) => isRecord(week) && typeof week.id === 'string' && typeof week.label === 'string' && typeof week.dates === 'string')) return false
-  if (!initiatives.every((initiative) => isRecord(initiative) && typeof initiative.id === 'string' && typeof initiative.name === 'string' && typeof initiative.code === 'string' && typeof initiative.tone === 'string')) return false
+  if (!weeks.every((week) => isRecord(week) && hasText(week.id) && hasText(week.label) && hasText(week.dates))) return false
+  if (!initiatives.every((initiative) => isRecord(initiative) && hasText(initiative.id) && hasText(initiative.name) && hasText(initiative.code) && hasText(initiative.tone))) return false
   const weekIds = new Set(weeks.map((week) => week.id))
   const initiativeIds = new Set(initiatives.map((initiative) => initiative.id))
-  if (!people.every((person) => isRecord(person) && typeof person.id === 'string' && typeof person.name === 'string' && typeof person.role === 'string' && typeof person.initials === 'string' && hasWeekValues(person.capacity, weekIds) && hasWeekValues(person.timeOff, weekIds, person.capacity) && hasWeekValues(person.commitments, weekIds, person.capacity))) return false
+  if (!people.every((person) => isRecord(person) && hasText(person.id) && hasText(person.name) && hasText(person.role) && hasText(person.initials) && hasWeekValues(person.capacity, weekIds) && hasWeekValues(person.timeOff, weekIds, person.capacity) && hasWeekValues(person.commitments, weekIds, person.capacity))) return false
   const peopleById = new Map(people.map((person) => [person.id, person]))
-  if (weekIds.size !== weeks.length || initiativeIds.size !== initiatives.length || peopleById.size !== people.length) return false
+  const normalizedWeekIds = new Set(weeks.map((week) => week.id.trim().toLowerCase()))
+  const normalizedInitiativeIds = new Set(initiatives.map((initiative) => initiative.id.trim().toLowerCase()))
+  const normalizedPeopleIds = new Set(people.map((person) => person.id.trim().toLowerCase()))
+  if (weekIds.size !== weeks.length || initiativeIds.size !== initiatives.length || peopleById.size !== people.length || normalizedWeekIds.size !== weeks.length || normalizedInitiativeIds.size !== initiatives.length || normalizedPeopleIds.size !== people.length) return false
 
   const allocationKeys = new Set<string>()
   return value.allocations.every((allocation) => {
