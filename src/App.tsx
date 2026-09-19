@@ -29,6 +29,7 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [warning, setWarning] = useState(initial.warning)
   const [saved, setSaved] = useState(false)
+  const [exportNotice, setExportNotice] = useState('')
   const [confirmReset, setConfirmReset] = useState(false)
   const [resetSnapshot, setResetSnapshot] = useState<{ baseline: Plan; draft: Plan } | null>(null)
   const cancelResetRef = useRef<HTMLButtonElement>(null)
@@ -106,10 +107,11 @@ export default function App() {
   }
 
   const exportPlan = () => {
-    const blob = new Blob([JSON.stringify({ product: 'Resource Radar sample', exportedAt: new Date().toISOString(), plan: draft }, null, 2)], { type: 'application/json' })
+    const blob = new Blob([JSON.stringify({ product: 'Resource Radar sample', boundary: 'Fictional working draft; local export only', exportedAt: new Date().toISOString(), draftChanges: changeSummary, plan: draft }, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
-    link.href = url; link.download = 'resource-radar-draft.json'; link.click(); URL.revokeObjectURL(url)
+    link.href = url; link.download = 'resource-radar-draft.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000)
+    setExportNotice(`${changes} draft ${changes === 1 ? 'change' : 'changes'} exported with the fictional-data boundary.`)
   }
 
   const editAllocation = (personId: string, initiativeId: string, weekId: string, days: number) => setDraft((plan) => setAllocation(plan, personId, initiativeId, weekId, days))
@@ -129,6 +131,7 @@ export default function App() {
       </aside>
       <div className="work-area"><main>
         {warning && <div className="warning" role="alert"><AlertTriangle size={18} /><span>{warning}</span></div>}
+        {exportNotice && <div className="reset-recovery" role="status"><span>{exportNotice}</span></div>}
         {view === 'plan' && <>
           <section className="page-head">
             <div><p className="eyebrow">Planning cycle · Q4 launch window</p><h1>Capacity, without the guesswork.</h1><p>Allocate person-days against real availability. Draft changes stay separate until you apply them.</p></div>

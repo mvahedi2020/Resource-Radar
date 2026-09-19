@@ -74,3 +74,18 @@ test('reports a no-results search state and recovers', async ({ page }) => {
   await page.getByRole('button', { name: 'Clear search' }).click()
   await expect(page.getByText('Maya Chen')).toBeVisible()
 })
+
+test('exports the working draft with its boundary and change scope', async ({ page }) => {
+  await page.getByLabel('Maya Chen, Atlas onboarding, Oct 5 person-days').fill('2')
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export draft' }).click()
+  const download = await downloadPromise
+  const stream = await download.createReadStream()
+  if (!stream) throw new Error('The draft export was not readable')
+  let json = ''
+  for await (const chunk of stream) json += chunk.toString()
+  const payload = JSON.parse(json)
+  expect(payload.boundary).toBe('Fictional working draft; local export only')
+  expect(payload.draftChanges).toEqual({ allocationCells: 1, constraintCells: 0, total: 1 })
+  await expect(page.getByRole('status')).toContainText('1 draft change exported')
+})
