@@ -3,9 +3,10 @@ import type { Allocation, Initiative, LoadCell, Person, Plan } from './types'
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const hasText = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
+const isHalfDay = (value: number) => Number.isInteger(value * 2)
 const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<string, number>): value is Record<string, number> => isRecord(value) && [...weekIds].every((weekId) => {
   const days = value[weekId]
-  return isFiniteNumber(days) && days >= 0 && (maximum === undefined || days <= maximum[weekId])
+  return isFiniteNumber(days) && isHalfDay(days) && days >= 0 && (maximum === undefined || days <= maximum[weekId])
 })
 const halfDay = (days: number, maximum: number) => Number.isFinite(days) ? Math.min(maximum, Math.max(0, Math.round(days * 2) / 2)) : 0
 
@@ -32,7 +33,7 @@ export function isPlan(value: unknown): value is Plan {
     const key = `${allocation.personId}:${allocation.initiativeId}:${allocation.weekId}`
     if (allocationKeys.has(key)) return false
     allocationKeys.add(key)
-    return Boolean(person) && initiativeIds.has(allocation.initiativeId) && weekIds.has(allocation.weekId) && allocation.days > 0 && allocation.days <= 10
+    return Boolean(person) && initiativeIds.has(allocation.initiativeId) && weekIds.has(allocation.weekId) && isHalfDay(allocation.days) && allocation.days > 0 && allocation.days <= 10
   })
 }
 
