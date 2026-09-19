@@ -24,7 +24,8 @@ test('confirms a reset and restores both baseline and draft from its recovery sn
 })
 
 test('keeps keyboard focus inside the reset confirmation', async ({ page }) => {
-  await page.getByRole('button', { name: 'Reset sample' }).first().click()
+  const trigger = page.getByRole('button', { name: 'Reset sample' }).first()
+  await trigger.click()
   const dialog = page.getByRole('dialog')
   const cancel = dialog.getByRole('button', { name: 'Keep current plan' })
   const confirm = dialog.getByRole('button', { name: 'Reset sample data' })
@@ -33,6 +34,8 @@ test('keeps keyboard focus inside the reset confirmation', async ({ page }) => {
   await expect(confirm).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(cancel).toBeFocused()
+  await page.keyboard.press('Escape')
+  await expect(trigger).toBeFocused()
 })
 
 test('edits, applies, and compares a resource scenario', async ({ page }) => {

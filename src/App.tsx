@@ -32,6 +32,7 @@ export default function App() {
   const [confirmReset, setConfirmReset] = useState(false)
   const [resetSnapshot, setResetSnapshot] = useState<{ baseline: Plan; draft: Plan } | null>(null)
   const cancelResetRef = useRef<HTMLButtonElement>(null)
+  const resetTriggerRef = useRef<HTMLElement | null>(null)
   const changeSummary = planChangeSummary(baseline, draft)
   const changes = changeSummary.total
 
@@ -55,7 +56,7 @@ export default function App() {
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
     }
     addEventListener('keydown', keepFocusInDialog)
-    return () => removeEventListener('keydown', keepFocusInDialog)
+    return () => { removeEventListener('keydown', keepFocusInDialog); resetTriggerRef.current?.focus() }
   }, [confirmReset])
 
   const visiblePeople = draft.people.filter((person) => `${person.name} ${person.role}`.toLowerCase().includes(query.toLowerCase()))
@@ -97,6 +98,11 @@ export default function App() {
       setWarning('Browser storage is unavailable. The restored plan remains in this tab, but it cannot be saved for later.')
     }
     setResetSnapshot(null)
+  }
+
+  const requestReset = () => {
+    resetTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    setConfirmReset(true)
   }
 
   const exportPlan = () => {
@@ -170,11 +176,11 @@ export default function App() {
           <section className="initiative-strip"><div><p className="eyebrow">Portfolio impact</p><h2>What the draft means for each initiative</h2></div>{draft.initiatives.map((initiative) => { const impact = initiativeImpact(draft, initiative); return <article key={initiative.id}><i style={{ background: initiative.tone }} /><span><b>{initiative.name}</b><small>{impact.total} person-days planned</small></span><em className={impact.atRisk ? 'risk' : 'clear'}>{impact.atRisk ? 'Capacity risk' : 'Covered'}</em></article> })}</section>
         </>}
 
-        {view === 'scenarios' && <section className="narrative-page"><p className="eyebrow">Scenario control</p><h1>Baseline and draft stay distinct.</h1><p className="lede">The applied baseline is this browser's point of reference. Your draft contains {changes} changed planning {changes === 1 ? 'item' : 'items'} and can be reset without altering the baseline.</p><div className="comparison"><article><span>01</span><h2>Applied baseline</h2><strong>{baseline.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>The last scenario explicitly applied in this browser.</p></article><article className="draft-card"><span>02</span><h2>Working draft</h2><strong>{draft.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>{changes ? `Draft edits: ${changeSummary.allocationCells} allocation ${changeSummary.allocationCells === 1 ? 'cell' : 'cells'}; ${changeSummary.constraintCells} availability ${changeSummary.constraintCells === 1 ? 'cell' : 'cells'}.` : 'No uncommitted planning edits.'}</p></article></div><div className="scenario-actions"><button className="button secondary" onClick={() => setConfirmReset(true)}><RotateCcw size={17} />Reset sample data</button><button className="button primary" onClick={exportPlan}><Download size={17} />Export draft JSON</button></div>{resetSnapshot && <div className="reset-recovery" role="status"><span>Sample data was restored.</span><button className="text-button" onClick={restoreReset}>Undo reset and restore the prior scenario</button></div>}</section>}
+        {view === 'scenarios' && <section className="narrative-page"><p className="eyebrow">Scenario control</p><h1>Baseline and draft stay distinct.</h1><p className="lede">The applied baseline is this browser's point of reference. Your draft contains {changes} changed planning {changes === 1 ? 'item' : 'items'} and can be reset without altering the baseline.</p><div className="comparison"><article><span>01</span><h2>Applied baseline</h2><strong>{baseline.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>The last scenario explicitly applied in this browser.</p></article><article className="draft-card"><span>02</span><h2>Working draft</h2><strong>{draft.allocations.reduce((sum, item) => sum + item.days, 0)} days</strong><p>{changes ? `Draft edits: ${changeSummary.allocationCells} allocation ${changeSummary.allocationCells === 1 ? 'cell' : 'cells'}; ${changeSummary.constraintCells} availability ${changeSummary.constraintCells === 1 ? 'cell' : 'cells'}.` : 'No uncommitted planning edits.'}</p></article></div><div className="scenario-actions"><button className="button secondary" onClick={requestReset}><RotateCcw size={17} />Reset sample data</button><button className="button primary" onClick={exportPlan}><Download size={17} />Export draft JSON</button></div>{resetSnapshot && <div className="reset-recovery" role="status"><span>Sample data was restored.</span><button className="text-button" onClick={restoreReset}>Undo reset and restore the prior scenario</button></div>}</section>}
 
         {view === 'about' && <section className="narrative-page"><p className="eyebrow">Independent sample</p><h1>A planning interaction, built to be examined.</h1><p className="lede">Resource Radar is a fictional portfolio artifact for Northstar, a fictional B2B SaaS company. It runs entirely in your browser, uses no authentication or paid service, and makes no connection to a production system.</p><div className="about-grid"><article><h2>My role as Product Manager</h2><p>I defined the product problem, prioritization and tradeoffs, requirements, workflows, fictional sample data, acceptance criteria, and evaluation plan. AI tools assisted with implementation and verification.</p></article><article><h2>What it does not claim</h2><p>The names, initiatives, usage, and decisions are sample data. Proposed metrics are targets, not measured outcomes. I did not manually write the application code.</p></article></div><a className="case-link" href="https://github.com/mvahedi2020/Resource-Radar/blob/main/docs/product/PRD.md">Read the PRD <ArrowUpRight size={18} /></a><a className="case-link" href="https://github.com/mvahedi2020/Resource-Radar/blob/main/docs/product/Case_Study.md">Read the product case study <ArrowUpRight size={18} /></a></section>}
       </main>
-      <footer><span>Northstar sample · Data stays on this device</span><button onClick={() => setConfirmReset(true)}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer>
+      <footer><span>Northstar sample · Data stays on this device</span><button onClick={requestReset}>Reset sample</button><button onClick={exportPlan}>Export draft</button></footer>
       {confirmReset && <div className="reset-backdrop" role="presentation"><section className="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="reset-title"><p className="eyebrow">Reset sample plan</p><h2 id="reset-title">Restore the original fictional allocations?</h2><p>This replaces the applied baseline and working draft in this browser. Export the current draft first if you want to keep a copy.</p><div><button className="button secondary" ref={cancelResetRef} onClick={() => setConfirmReset(false)}>Keep current plan</button><button className="button primary" onClick={() => { reset(); setConfirmReset(false) }}>Reset sample data</button></div></section></div>}</div>
     </div>
   )
