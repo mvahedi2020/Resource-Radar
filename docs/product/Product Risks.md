@@ -7,6 +7,7 @@
 | Baseline and draft are missed | Participants think an edit committed a plan. | Preserve separate summaries and observe recovery. | The two-state model remains unclear. |
 | Day model does not fit planning inputs | Participants cannot map availability into days. | Ask them to narrate their current model first. | Translation cost outweighs clarity. |
 | Local state fails handoff | Participants need a shared scenario instead of export. | Research handoff needs before shared state. | Data and permissions needs are specified. |
-| Local export exposes more planning detail than intended | A participant shares a full fictional-plan export when only a decision summary is needed. | Keep export device-local and test which fields a handoff actually requires before any real-data or sharing proposal. | A retention, access, and minimization design is approved for a bounded pilot. |
+| Local export exposes more planning detail than intended | A participant shares a full fictional-plan export when only a decision summary is needed. | Mark the file as a fictional working draft and include change counts so scope is inspectable; test a smaller decision-summary handoff before any real-data or sharing proposal. | A bounded handoff contract plus retention, access, and minimization design is approved for a pilot. |
+| Restored data violates the visible planning unit | A saved plan reappears with duplicate identities or quarter-day values that direct controls cannot create. | Validate saved identities and half-day units before rendering; fall back to the known sample with a warning. | A migration contract is needed before the stored schema changes. |
 
 These are prospective risks for a fictional sample, not reported incidents or customer harm.
