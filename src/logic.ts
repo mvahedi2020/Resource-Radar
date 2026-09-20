@@ -4,7 +4,7 @@ const isRecord = (value: unknown): value is Record<string, unknown> => typeof va
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const hasText = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
 const isHalfDay = (value: number) => Number.isInteger(value * 2)
-const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<string, number>): value is Record<string, number> => isRecord(value) && [...weekIds].every((weekId) => {
+const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<string, number>): value is Record<string, number> => isRecord(value) && Object.keys(value).length === weekIds.size && Object.keys(value).every((weekId) => weekIds.has(weekId)) && [...weekIds].every((weekId) => {
   const days = value[weekId]
   return isFiniteNumber(days) && isHalfDay(days) && days >= 0 && (maximum === undefined || days <= maximum[weekId])
 })
