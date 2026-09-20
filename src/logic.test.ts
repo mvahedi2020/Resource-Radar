@@ -53,5 +53,6 @@ describe('resource plan calculations', () => {
     expect(isPlan({ ...samplePlan, people: [{ ...samplePlan.people[0], timeOff: { ...samplePlan.people[0].timeOff, sep14: 1.25 } }, ...samplePlan.people.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, people: [{ ...samplePlan.people[0], name: ' ' }, ...samplePlan.people.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, people: [samplePlan.people[0], { ...samplePlan.people[1], id: ` ${samplePlan.people[0].id.toUpperCase()} ` }, ...samplePlan.people.slice(2)] })).toBe(false)
+    expect(isPlan({ ...samplePlan, initiatives: [{ ...samplePlan.initiatives[0], code: samplePlan.initiatives[1].code.toLowerCase() }, ...samplePlan.initiatives.slice(1)] })).toBe(false)
   })
 })

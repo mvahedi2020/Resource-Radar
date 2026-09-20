@@ -23,8 +23,9 @@ export function isPlan(value: unknown): value is Plan {
   const peopleById = new Map(people.map((person) => [person.id, person]))
   const normalizedWeekIds = new Set(weeks.map((week) => week.id.trim().toLowerCase()))
   const normalizedInitiativeIds = new Set(initiatives.map((initiative) => initiative.id.trim().toLowerCase()))
+  const normalizedInitiativeCodes = new Set(initiatives.map((initiative) => initiative.code.trim().toLowerCase()))
   const normalizedPeopleIds = new Set(people.map((person) => person.id.trim().toLowerCase()))
-  if (weekIds.size !== weeks.length || initiativeIds.size !== initiatives.length || peopleById.size !== people.length || normalizedWeekIds.size !== weeks.length || normalizedInitiativeIds.size !== initiatives.length || normalizedPeopleIds.size !== people.length) return false
+  if (weekIds.size !== weeks.length || initiativeIds.size !== initiatives.length || peopleById.size !== people.length || normalizedWeekIds.size !== weeks.length || normalizedInitiativeIds.size !== initiatives.length || normalizedInitiativeCodes.size !== initiatives.length || normalizedPeopleIds.size !== people.length) return false
 
   const allocationKeys = new Set<string>()
   return value.allocations.every((allocation) => {
