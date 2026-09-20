@@ -69,6 +69,7 @@ export default function App() {
   const applyDraft = () => {
     const next = clonePlan(draft)
     setBaseline(next)
+    setResetSnapshot(null)
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, baseline: next, savedAt: new Date().toISOString() }))
       setWarning('')
