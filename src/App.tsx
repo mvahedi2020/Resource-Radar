@@ -115,8 +115,8 @@ export default function App() {
     setExportNotice(`${changes} draft ${changes === 1 ? 'change' : 'changes'} exported with the fictional-data boundary.`)
   }
 
-  const editAllocation = (personId: string, initiativeId: string, weekId: string, days: number) => setDraft((plan) => setAllocation(plan, personId, initiativeId, weekId, days))
-  const editConstraint = (personId: string, weekId: string, field: 'timeOff' | 'commitments', days: number) => setDraft((plan) => setConstraint(plan, personId, weekId, field, days))
+  const editAllocation = (personId: string, initiativeId: string, weekId: string, days: number) => { setExportNotice(''); setDraft((plan) => setAllocation(plan, personId, initiativeId, weekId, days)) }
+  const editConstraint = (personId: string, weekId: string, field: 'timeOff' | 'commitments', days: number) => { setExportNotice(''); setDraft((plan) => setConstraint(plan, personId, weekId, field, days)) }
 
   return (
     <div className="app-shell">
