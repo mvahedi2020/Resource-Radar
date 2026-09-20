@@ -27,6 +27,8 @@ The product follows four principles:
 3. **Make change deliberate and reversible.** A draft is separate from the applied baseline until the user chooses Apply; reset includes a one-step recovery.
 4. **Show the product consequence.** An overload is not just a red cell: the affected initiative is surfaced as at risk. This is a capacity signal, not a delivery forecast.
 
+Scenario recovery is stateful: applying a new draft ends the prior reset-recovery window, and editing a draft after export clears the old export notice so status text always describes the current draft. Saved plans must contain exactly the visible week keys and initiative codes must remain unique after trimming and case folding.
+
 ## Core user story
 
 As a portfolio lead, I can see capacity, time off, operating commitments, and initiative allocations in one weekly view so I can resolve conflicts before applying a plan.
@@ -48,6 +50,8 @@ As a portfolio lead, I can see capacity, time off, operating commitments, and in
 | Identify decision risk | A zero-availability or overloaded person-week is visible in both text and status treatment. Initiative summaries identify allocations that intersect with an overload. |
 | Preserve a safe planning state | Draft changes do not alter the applied baseline until Apply draft is selected. Undo restores the draft from that baseline; a reset confirmation restores the fictional sample and offers one-step recovery of the previous scenario. |
 | Support review and recovery | Search filters people by name or role and provides a recoverable empty state. The current draft can be exported as local JSON with its fictional boundary and allocation/availability change counts. A storage failure is explained and the current tab remains usable. |
+| Keep scenario notices current | Applying a draft clears any prior reset-recovery action; changing a draft after export clears the prior export notice. |
+| Validate saved plan identity | Saved capacity maps contain exactly the current weeks, and initiative codes are unique regardless of case or surrounding whitespace. |
 | Make the demo broadly inspectable | Hash navigation supports browser back and forward. Native labels, semantic table structure, visible focus treatment, keyboard controls, touch targets, and responsive horizontal planning access are provided; closing reset returns focus to its trigger. |
 
 ## Explicit non-goals
