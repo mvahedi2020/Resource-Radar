@@ -15,11 +15,11 @@ export function isPlan(value: unknown): value is Plan {
   const weeks = value.weeks
   const initiatives = value.initiatives
   const people = value.people
-  if (!weeks.every((week) => isRecord(week) && hasText(week.id) && hasText(week.label) && hasText(week.dates))) return false
-  if (!initiatives.every((initiative) => isRecord(initiative) && hasText(initiative.id) && hasText(initiative.name) && hasText(initiative.code) && hasText(initiative.tone))) return false
+  if (!weeks.every((week) => isRecord(week) && typeof week.id === 'string' && week.id.trim() === week.id && hasText(week.id) && hasText(week.label) && hasText(week.dates))) return false
+  if (!initiatives.every((initiative) => isRecord(initiative) && typeof initiative.id === 'string' && initiative.id.trim() === initiative.id && typeof initiative.code === 'string' && initiative.code.trim() === initiative.code && hasText(initiative.id) && hasText(initiative.name) && hasText(initiative.code) && hasText(initiative.tone))) return false
   const weekIds = new Set(weeks.map((week) => week.id))
   const initiativeIds = new Set(initiatives.map((initiative) => initiative.id))
-  if (!people.every((person) => isRecord(person) && hasText(person.id) && hasText(person.name) && hasText(person.role) && hasText(person.initials) && hasWeekValues(person.capacity, weekIds) && hasWeekValues(person.timeOff, weekIds, person.capacity) && hasWeekValues(person.commitments, weekIds, person.capacity))) return false
+  if (!people.every((person) => isRecord(person) && typeof person.id === 'string' && person.id.trim() === person.id && hasText(person.id) && hasText(person.name) && hasText(person.role) && hasText(person.initials) && hasWeekValues(person.capacity, weekIds) && hasWeekValues(person.timeOff, weekIds, person.capacity) && hasWeekValues(person.commitments, weekIds, person.capacity))) return false
   const peopleById = new Map(people.map((person) => [person.id, person]))
   const normalizedWeekIds = new Set(weeks.map((week) => week.id.trim().toLowerCase()))
   const normalizedInitiativeIds = new Set(initiatives.map((initiative) => initiative.id.trim().toLowerCase()))
