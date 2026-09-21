@@ -29,6 +29,8 @@ The product follows four principles:
 
 Scenario recovery is stateful: applying a new draft ends the prior reset-recovery window, and editing a draft after export clears the old export notice so status text always describes the current draft. Saved plans must contain exactly the visible week keys and initiative codes must remain unique after trimming and case folding.
 
+An incompatible saved plan is preserved and blocks Apply for the session; Reset sample data is the explicit replacement action. A browser-storage access failure is a separate, non-blocking condition because the current tab remains useful even when later persistence is unavailable.
+
 ## Core user story
 
 As a portfolio lead, I can see capacity, time off, operating commitments, and initiative allocations in one weekly view so I can resolve conflicts before applying a plan.
