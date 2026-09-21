@@ -35,6 +35,13 @@ describe('resource plan calculations', () => {
     expect(changedCells(samplePlan, edited)).toBe(1)
   })
 
+  it('ignores edits that do not identify saved planning entities', () => {
+    expect(setAllocation(samplePlan, 'missing', 'atlas', 'sep14', 2)).toBe(samplePlan)
+    expect(setAllocation(samplePlan, 'maya', 'atlas', 'missing', 2)).toBe(samplePlan)
+    expect(setConstraint(samplePlan, 'missing', 'sep14', 'timeOff', 2)).toBe(samplePlan)
+    expect(setConstraint(samplePlan, 'maya', 'missing', 'timeOff', 2)).toBe(samplePlan)
+  })
+
   it('separates allocation edits from availability edits in a draft summary', () => {
     const withAllocation = setAllocation(samplePlan, 'maya', 'atlas', 'oct05', 2)
     const withAvailability = setConstraint(setConstraint(withAllocation, 'maya', 'sep14', 'timeOff', 2), 'maya', 'sep14', 'commitments', 2)

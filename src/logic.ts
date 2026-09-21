@@ -49,6 +49,7 @@ export function getLoad(person: Person, weekId: string, allocations: Allocation[
 }
 
 export function setAllocation(plan: Plan, personId: string, initiativeId: string, weekId: string, days: number): Plan {
+  if (!plan.people.some((person) => person.id === personId) || !plan.initiatives.some((initiative) => initiative.id === initiativeId) || !plan.weeks.some((week) => week.id === weekId)) return plan
   const allocations = plan.allocations.filter((a) => !(a.personId === personId && a.initiativeId === initiativeId && a.weekId === weekId))
   const normalized = halfDay(days, 10)
   if (normalized > 0) allocations.push({ personId, initiativeId, weekId, days: normalized })
@@ -56,6 +57,7 @@ export function setAllocation(plan: Plan, personId: string, initiativeId: string
 }
 
 export function setConstraint(plan: Plan, personId: string, weekId: string, field: 'timeOff' | 'commitments', days: number): Plan {
+  if (!plan.people.some((person) => person.id === personId) || !plan.weeks.some((week) => week.id === weekId)) return plan
   return {
     ...plan,
     people: plan.people.map((person) => person.id === personId ? {
