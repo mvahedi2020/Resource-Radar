@@ -32,6 +32,8 @@ Edit weekly allocations, time off and non-project commitments. Inspect overload,
 
 All people and initiatives are fictional. No integrations, collaboration, staffing recommendations, productivity scores or burnout diagnoses are provided. This is independent of the other Northstar demos and does not synchronize with them.
 
+If saved planning data is incompatible, the sample remains available for inspection while Apply is held until Reset sample data explicitly replaces it. Browser storage access failures remain usable in the current tab but cannot promise later persistence.
+
 ## Product evidence
 
 - [Product requirements — problem, users, decisions, workflow, acceptance criteria, and proposed measures](docs/product/PRD.md)
