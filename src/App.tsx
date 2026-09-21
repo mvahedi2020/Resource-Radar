@@ -7,15 +7,20 @@ import type { Plan } from './types'
 const STORAGE_KEY = 'northstar.resource-radar.plan.v1'
 type View = 'plan' | 'scenarios' | 'about'
 
-function readSaved(): { plan: Plan; warning: string } {
+function readSaved(): { plan: Plan; warning: string; blocked: boolean } {
+  let raw: string | null
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return { plan: clonePlan(samplePlan), warning: '' }
+    raw = localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return { plan: clonePlan(samplePlan), warning: 'Browser storage is unavailable. Your current tab remains usable, but changes cannot be saved for later.', blocked: false }
+  }
+  try {
+    if (!raw) return { plan: clonePlan(samplePlan), warning: '', blocked: false }
     const parsed = JSON.parse(raw) as { version: number; baseline: Plan }
     if (parsed.version !== 1 || !isPlan(parsed.baseline)) throw new Error('Unsupported saved data')
-    return { plan: parsed.baseline, warning: '' }
+    return { plan: parsed.baseline, warning: '', blocked: false }
   } catch {
-    return { plan: clonePlan(samplePlan), warning: 'Saved planning data could not be read. This session is using the sample plan.' }
+    return { plan: clonePlan(samplePlan), warning: 'Saved planning data could not be read. This session is using the sample plan. Reset sample data before applying changes.', blocked: true }
   }
 }
 
@@ -28,6 +33,7 @@ export default function App() {
   const [view, setView] = useState<View>(viewFromHash)
   const [query, setQuery] = useState('')
   const [warning, setWarning] = useState(initial.warning)
+  const [storageBlocked, setStorageBlocked] = useState(initial.blocked)
   const [saved, setSaved] = useState(false)
   const [exportNotice, setExportNotice] = useState('')
   const [confirmReset, setConfirmReset] = useState(false)
@@ -67,6 +73,7 @@ export default function App() {
   const allocated = loads.reduce((sum, { load }) => sum + load.allocated, 0)
 
   const applyDraft = () => {
+    if (storageBlocked) { setWarning('Saved planning data is incompatible. Reset sample data before applying changes.'); return }
     const next = clonePlan(draft)
     setBaseline(next)
     setResetSnapshot(null)
@@ -85,6 +92,7 @@ export default function App() {
     const next = clonePlan(samplePlan)
     setBaseline(next)
     setDraft(clonePlan(next))
+    setStorageBlocked(false)
     try { localStorage.removeItem(STORAGE_KEY); setWarning('') } catch { setWarning('Browser storage is unavailable. The sample plan is restored for this tab.') }
   }
 
@@ -93,6 +101,7 @@ export default function App() {
     const restoredBaseline = clonePlan(resetSnapshot.baseline)
     setBaseline(restoredBaseline)
     setDraft(clonePlan(resetSnapshot.draft))
+    setStorageBlocked(false)
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, baseline: restoredBaseline, savedAt: new Date().toISOString() }))
       setWarning('')
