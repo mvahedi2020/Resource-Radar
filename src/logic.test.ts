@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { samplePlan } from './data'
-import { changedCells, getLoad, initiativeImpact, isPlan, planChangeSummary, setAllocation, setConstraint } from './logic'
+import { changedCells, exportEnvelope, getLoad, initiativeImpact, isPlan, planChangeSummary, setAllocation, setConstraint } from './logic'
 
 describe('resource plan calculations', () => {
   it('subtracts time off and commitments before judging load', () => {
@@ -63,5 +63,14 @@ describe('resource plan calculations', () => {
     expect(isPlan({ ...samplePlan, initiatives: [{ ...samplePlan.initiatives[0], code: samplePlan.initiatives[1].code.toLowerCase() }, ...samplePlan.initiatives.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, weeks: [{ ...samplePlan.weeks[0], id: ` ${samplePlan.weeks[0].id}` }, ...samplePlan.weeks.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, initiatives: [{ ...samplePlan.initiatives[0], code: ` ${samplePlan.initiatives[0].code}` }, ...samplePlan.initiatives.slice(1)] })).toBe(false)
+  })
+
+  it('labels exports as local fictional drafts and preserves the change summary', () => {
+    const edited = setAllocation(samplePlan, 'maya', 'atlas', 'oct05', 2)
+    const summary = planChangeSummary(samplePlan, edited)
+    const envelope = exportEnvelope(edited, summary)
+    expect(envelope.scope).toBe('Local fictional draft only')
+    expect(envelope.draftChanges).toEqual(summary)
+    expect(envelope.plan).toBe(edited)
   })
 })

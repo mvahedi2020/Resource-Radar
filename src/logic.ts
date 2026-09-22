@@ -90,3 +90,7 @@ export function planChangeSummary(baseline: Plan, draft: Plan) {
 export function changedCells(baseline: Plan, draft: Plan): number {
   return planChangeSummary(baseline, draft).total
 }
+
+export function exportEnvelope(plan: Plan, changes: ReturnType<typeof planChangeSummary>) {
+  return { product: 'Resource Radar sample', scope: 'Local fictional draft only', exportedAt: new Date().toISOString(), draftChanges: changes, plan }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, ArrowUpRight, CalendarDays, Check, Download, RotateCcw, Search, Users } from 'lucide-react'
 import { clonePlan, samplePlan } from './data'
-import { getLoad, initiativeImpact, isPlan, planChangeSummary, setAllocation, setConstraint } from './logic'
+import { exportEnvelope, getLoad, initiativeImpact, isPlan, planChangeSummary, setAllocation, setConstraint } from './logic'
 import type { Plan } from './types'
 
 const STORAGE_KEY = 'northstar.resource-radar.plan.v1'
@@ -117,7 +117,7 @@ export default function App() {
   }
 
   const exportPlan = () => {
-    const blob = new Blob([JSON.stringify({ product: 'Resource Radar sample', boundary: 'Fictional working draft; local export only', exportedAt: new Date().toISOString(), draftChanges: changeSummary, plan: draft }, null, 2)], { type: 'application/json' })
+    const blob = new Blob([JSON.stringify(exportEnvelope(draft, changeSummary), null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url; link.download = 'resource-radar-draft.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000)
