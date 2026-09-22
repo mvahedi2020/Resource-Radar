@@ -93,6 +93,7 @@ export default function App() {
     setBaseline(next)
     setDraft(clonePlan(next))
     setStorageBlocked(false)
+    setExportNotice('Sample data restored. The prior scenario can be recovered with Undo reset.')
     try { localStorage.removeItem(STORAGE_KEY); setWarning('') } catch { setWarning('Browser storage is unavailable. The sample plan is restored for this tab.') }
   }
 
@@ -109,6 +110,7 @@ export default function App() {
       setWarning('Browser storage is unavailable. The restored plan remains in this tab, but it cannot be saved for later.')
     }
     setResetSnapshot(null)
+    setExportNotice('Undo reset restored the prior local scenario.')
   }
 
   const requestReset = () => {
