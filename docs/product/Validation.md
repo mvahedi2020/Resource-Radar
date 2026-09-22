@@ -37,3 +37,8 @@ Stop expansion and return to the conflict explanation if participants repeatedly
 ## Known limits
 
 The dataset is fictional, persistence is browser-local, and no integrations or multi-user behavior are represented. The current sample does not establish usability, demand, or business impact.
+# September 21 review additions
+
+Review the full local path: edit one allocation, confirm the changed-cell count, export the draft, and inspect that the JSON carries the fictional local scope and change summary. Then reset the sample, verify the result announcement, and use Undo reset to recover the prior scenario.
+
+These checks establish browser interaction behavior only. They do not establish identity, multi-user conflict handling, server persistence, or recovery after the tab is closed.
