@@ -88,3 +88,8 @@ Research is staged. First, conduct five moderated formative sessions with produc
 | Does the scenario surface unavailable work? | Known zero-availability assignments surfaced / all known assignments | 100% | No productivity or burnout diagnosis. |
 
 Record task time, incorrect assumptions, recovery behavior, and confidence. Automated checks verify planning arithmetic and controls; they do not establish usability, demand, or business impact. No human research or customer outcome is claimed.
+# Interaction contract: draft planning
+
+The working draft is separate from the applied baseline. Reviewers can edit allocations and availability, inspect changed cells, apply the draft to this browser, undo draft edits, export a JSON review artifact, or reset the fictional sample after confirmation.
+
+Every export must carry its local fictional scope. Reset recovery is deliberately bounded to the active browser session and must not be described as authenticated account recovery or production synchronization.

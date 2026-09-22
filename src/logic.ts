@@ -92,5 +92,5 @@ export function changedCells(baseline: Plan, draft: Plan): number {
 }
 
 export function exportEnvelope(plan: Plan, changes: ReturnType<typeof planChangeSummary>) {
-  return { product: 'Resource Radar sample', scope: 'Local fictional draft only', exportedAt: new Date().toISOString(), draftChanges: changes, plan }
+  return { product: 'Resource Radar sample', boundary: 'Fictional working draft; local export only', scope: 'Local fictional draft only', exportedAt: new Date().toISOString(), draftChanges: changes, plan }
 }
