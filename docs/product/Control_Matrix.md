@@ -15,3 +15,10 @@ All people, initiatives, allocations, and exported data are fictional samples. T
 | Export | Export draft | Downloads the current fictional draft as JSON with a boundary label and separate allocation/availability change counts | It does not upload or share any file; the interface announces the number of draft changes exported, then clears that notice when the draft changes |
 | Persistence | Versioned browser storage | Restores a valid applied baseline on refresh | Ambiguous IDs, incomplete records, unknown relationships, duplicate allocations, non-half-day units, extra week keys, or duplicate initiative codes fall back to the sample plan with a warning and block Apply until Reset sample data; a storage access failure remains usable in the current tab |
 | Accessibility | Semantic table, labels, visible focus, keyboard-friendly details | Enables screen-reader and keyboard inspection of each editable field | Responsive view keeps the planning surface scrollable rather than clipping data |
+# Local planning controls
+
+| Control | User-visible behavior | Evidence boundary |
+| --- | --- | --- |
+| Apply draft | Announces the applied baseline and persists it to this browser. | No account, server, or production plan is changed. |
+| Undo reset | Restores the prior local scenario after a confirmed reset. | Recovery is session-local and depends on the current tab state. |
+| Export draft | Includes the change summary and a local fictional scope label in JSON. | The file is a review artifact, not an operational handoff. |
