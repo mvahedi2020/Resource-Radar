@@ -166,7 +166,7 @@ export default function App() {
               <div><h2>Weekly allocation</h2><p>Each cell shows available and assigned person-days.</p></div>
               <label className="search"><Search size={17} /><span className="sr-only">Find a team member</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Find a team member" /></label>
             </div>
-            {visiblePeople.length ? <div className="matrix-wrap"><table className="matrix">
+            {visiblePeople.length ? <div className="matrix-wrap"><table className="matrix"><caption className="sr-only">Weekly person-day allocations and availability</caption>
               <thead><tr><th>Person</th>{draft.weeks.map((week) => <th key={week.id}><b>{week.label}</b><small>{week.dates}</small></th>)}</tr></thead>
               <tbody>{visiblePeople.map((person) => <tr key={person.id}>
                 <th><div className="person"><span className="avatar">{person.initials}</span><span><b>{person.name}</b><small>{person.role}</small></span></div></th>
