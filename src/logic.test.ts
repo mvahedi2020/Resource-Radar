@@ -50,6 +50,9 @@ describe('resource plan calculations', () => {
 
   it('accepts a complete plan and rejects malformed saved planning data', () => {
     expect(isPlan(samplePlan)).toBe(true)
+    expect(isPlan({ ...samplePlan, weeks: [] })).toBe(false)
+    expect(isPlan({ ...samplePlan, initiatives: [] })).toBe(false)
+    expect(isPlan({ ...samplePlan, people: [] })).toBe(false)
     expect(isPlan({ ...samplePlan, people: [{ id: 'maya' }] })).toBe(false)
     expect(isPlan({ ...samplePlan, allocations: [{ personId: 'unknown', initiativeId: 'atlas', weekId: 'sep14', days: 1 }] })).toBe(false)
     expect(isPlan({ ...samplePlan, allocations: [{ personId: 'maya', initiativeId: 'atlas', weekId: 'sep14', days: Number.NaN }] })).toBe(false)

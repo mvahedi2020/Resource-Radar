@@ -11,7 +11,7 @@ const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<st
 const halfDay = (days: number, maximum: number) => Number.isFinite(days) ? Math.min(maximum, Math.max(0, Math.round(days * 2) / 2)) : 0
 
 export function isPlan(value: unknown): value is Plan {
-  if (!isRecord(value) || !Array.isArray(value.weeks) || !Array.isArray(value.initiatives) || !Array.isArray(value.people) || !Array.isArray(value.allocations)) return false
+  if (!isRecord(value) || !Array.isArray(value.weeks) || !Array.isArray(value.initiatives) || !Array.isArray(value.people) || !Array.isArray(value.allocations) || value.weeks.length === 0 || value.initiatives.length === 0 || value.people.length === 0) return false
   const weeks = value.weeks
   const initiatives = value.initiatives
   const people = value.people
