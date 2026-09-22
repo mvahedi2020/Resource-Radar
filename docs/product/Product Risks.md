@@ -15,3 +15,10 @@
 | Invalid saved state is overwritten by an inspection edit | A malformed payload falls back to the sample, then Apply silently replaces it. | Preserve the payload and block Apply until Reset sample data is confirmed; keep storage access failures separate so the current tab remains usable. | A migration or explicit recovery workflow is approved. |
 
 These are prospective risks for a fictional sample, not reported incidents or customer harm.
+# Current integrity risks
+
+* A downloaded draft can be mistaken for a committed operating plan unless its fictional local scope stays visible.
+* Reset recovery is intentionally bounded to the active browser state and cannot substitute for identity-backed recovery.
+* Capacity conflicts are directional planning signals; they are not staffing commitments or measured delivery outcomes.
+
+Mitigation: announce action results, show the baseline/draft distinction, preserve explicit scope in exports, and test reset recovery with a changed scenario.
