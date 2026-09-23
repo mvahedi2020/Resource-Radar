@@ -65,7 +65,14 @@ describe('resource plan calculations', () => {
     expect(isPlan({ ...samplePlan, people: [samplePlan.people[0], { ...samplePlan.people[1], id: ` ${samplePlan.people[0].id.toUpperCase()} ` }, ...samplePlan.people.slice(2)] })).toBe(false)
     expect(isPlan({ ...samplePlan, initiatives: [{ ...samplePlan.initiatives[0], code: samplePlan.initiatives[1].code.toLowerCase() }, ...samplePlan.initiatives.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, weeks: [{ ...samplePlan.weeks[0], id: ` ${samplePlan.weeks[0].id}` }, ...samplePlan.weeks.slice(1)] })).toBe(false)
+    expect(isPlan({ ...samplePlan, weeks: [{ ...samplePlan.weeks[0], label: samplePlan.weeks[1].label }, ...samplePlan.weeks.slice(1)] })).toBe(false)
     expect(isPlan({ ...samplePlan, initiatives: [{ ...samplePlan.initiatives[0], code: ` ${samplePlan.initiatives[0].code}` }, ...samplePlan.initiatives.slice(1)] })).toBe(false)
+  })
+
+  it('keeps initiative risk safe when a runtime plan has a dangling person reference', () => {
+    const signal = samplePlan.initiatives.find((initiative) => initiative.id === 'signal')!
+    const malformed = { ...samplePlan, allocations: [{ personId: 'missing', initiativeId: signal.id, weekId: 'sep14', days: 1 }] }
+    expect(initiativeImpact(malformed, signal)).toEqual({ total: 1, atRisk: true })
   })
 
   it('labels exports as local fictional drafts and preserves the change summary', () => {

@@ -12,7 +12,7 @@ Actual workspace screenshots and a workflow recording are in ../media. These are
 
 ## What is verified in this repository
 
-Automated tests cover availability subtraction, zero-availability classification, initiative risk propagation, allocation bounds, and baseline/draft change detection. Type checking, linting, and the production build are part of the repository verification scripts.
+Automated tests cover availability subtraction, zero-availability classification, initiative risk propagation, allocation bounds, baseline/draft change detection, duplicate visible week labels, and safe handling of dangling runtime references. Browser workflow checks verify that draft edits remain separate until Apply and persist after refresh, and that the seeded zero-availability conflict is surfaced in the initiative summary. Type checking, linting, and the production build are part of the repository verification scripts.
 
 ## Proposed user validation
 
