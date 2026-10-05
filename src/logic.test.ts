@@ -84,3 +84,21 @@ describe('resource plan calculations', () => {
     expect(envelope.plan).toBe(edited)
   })
 })
+
+
+it('keeps tuple identities distinct when saved IDs contain delimiters', () => {
+  const baseline = {
+    weeks: [{ id: 'w', label: 'Week 1', dates: 'Oct 5' }],
+    people: [
+      { id: 'a:b', name: 'Person A', role: 'PM', initials: 'A', capacity: { w: 5 }, timeOff: { w: 0 }, commitments: { w: 0 } },
+      { id: 'a', name: 'Person B', role: 'PM', initials: 'B', capacity: { w: 5 }, timeOff: { w: 0 }, commitments: { w: 0 } },
+    ],
+    initiatives: [{ id: 'c', name: 'Project C', code: 'C', tone: 'blue' }, { id: 'b:c', name: 'Project BC', code: 'BC', tone: 'green' }],
+    allocations: [{ personId: 'a:b', initiativeId: 'c', weekId: 'w', days: 1 }],
+  }
+  expect(isPlan(baseline)).toBe(true)
+  const draft = setAllocation(baseline, 'a', 'b:c', 'w', 2)
+  expect(planChangeSummary(baseline, draft)).toEqual({ allocationCells: 1, constraintCells: 0, total: 1 })
+  expect(isPlan(draft)).toBe(true)
+  expect(isPlan({ ...draft, allocations: [...draft.allocations, draft.allocations[0]] })).toBe(false)
+})

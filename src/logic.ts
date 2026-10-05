@@ -3,6 +3,7 @@ import type { Allocation, Initiative, LoadCell, Person, Plan } from './types'
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const hasText = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
+const allocationKey = (personId: string, initiativeId: string, weekId: string) => JSON.stringify([personId, initiativeId, weekId])
 const isHalfDay = (value: number) => Number.isInteger(value * 2)
 const hasWeekValues = (value: unknown, weekIds: Set<string>, maximum?: Record<string, number>): value is Record<string, number> => isRecord(value) && Object.keys(value).length === weekIds.size && Object.keys(value).every((weekId) => weekIds.has(weekId)) && [...weekIds].every((weekId) => {
   const days = value[weekId]
@@ -32,7 +33,7 @@ export function isPlan(value: unknown): value is Plan {
   return value.allocations.every((allocation) => {
     if (!isRecord(allocation) || typeof allocation.personId !== 'string' || typeof allocation.initiativeId !== 'string' || typeof allocation.weekId !== 'string' || !isFiniteNumber(allocation.days)) return false
     const person = peopleById.get(allocation.personId)
-    const key = `${allocation.personId}:${allocation.initiativeId}:${allocation.weekId}`
+    const key = allocationKey(allocation.personId, allocation.initiativeId, allocation.weekId)
     if (allocationKeys.has(key)) return false
     allocationKeys.add(key)
     return Boolean(person) && initiativeIds.has(allocation.initiativeId) && weekIds.has(allocation.weekId) && isHalfDay(allocation.days) && allocation.days > 0 && allocation.days <= 10
@@ -79,8 +80,8 @@ export function initiativeImpact(plan: Plan, initiative: Initiative) {
 }
 
 export function planChangeSummary(baseline: Plan, draft: Plan) {
-  const value = (plan: Plan, key: string) => plan.allocations.find((a) => `${a.personId}:${a.initiativeId}:${a.weekId}` === key)?.days ?? 0
-  const keys = new Set([...baseline.allocations, ...draft.allocations].map((a) => `${a.personId}:${a.initiativeId}:${a.weekId}`))
+  const value = (plan: Plan, key: string) => plan.allocations.find((a) => allocationKey(a.personId, a.initiativeId, a.weekId) === key)?.days ?? 0
+  const keys = new Set([...baseline.allocations, ...draft.allocations].map((a) => allocationKey(a.personId, a.initiativeId, a.weekId)))
   const allocationChanges = [...keys].filter((key) => value(baseline, key) !== value(draft, key)).length
   const constraintChanges = draft.people.reduce((count, person) => {
     const original = baseline.people.find((item) => item.id === person.id)
