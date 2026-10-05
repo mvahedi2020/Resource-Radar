@@ -6,6 +6,8 @@ A product plan needs to fit the team's actual availability. This PM case study m
 
 ![Resource Radar weekly planning workspace](docs/media/screenshot.png)
 
+Product tradeoff: making person-days feasible leaves the team responsible for choosing which scope or commitment changes. The next investment depends on better planning reasoning and sustainable availability maintenance. See the [case study](docs/product/Case_Study.md) for the proposed comparison and investment criteria.
+
 ## Try this decision
 
 Northstar, a fictional B2B SaaS company, has competing onboarding, account-insight and trust initiatives. Find Noah's zero-availability week, remove or move the conflicting work, and compare your draft with the baseline. Apply a deliberate choice or discard it; export the draft for discussion.
