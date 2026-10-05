@@ -45,3 +45,7 @@ If saved planning data is incompatible, the sample remains available for inspect
 - [Implemented / next / later](docs/product/Sprint_Backlog.md)
 - [Validation](docs/product/Validation.md)
 - [Contributor setup](CONTRIBUTING.md)
+
+## Read the product documents
+
+[Open the formatted document index](https://mvahedi2020.github.io/Resource-Radar/docs/index.html) for the case study, walkthrough, requirements, and supporting product work. Markdown files remain the source documents.
