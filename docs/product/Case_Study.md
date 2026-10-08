@@ -1,5 +1,9 @@
 # Resource Radar case study
 
+Compare planned work with the time each person actually has available. Change a draft to address an overload, then review it before saving the plan.
+
+**The product choice:** Make time constraints visible while leaving scope and staffing decisions with the team. [Try the sample](https://mvahedi2020.github.io/Resource-Radar/) · [Follow the walkthrough](Sample%20Walkthrough.md).
+
 ## The product problem
 
 Northstar is a fictional B2B SaaS company planning several launch initiatives across a small cross-functional team. A typical staffing sheet can show assignments while hiding the constraints that matter: a five-day week is not five available project days when time off and operating work are already committed.

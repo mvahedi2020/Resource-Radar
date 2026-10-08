@@ -1,6 +1,8 @@
 # Resource Radar
 
-A product plan needs to fit the team's actual availability. This PM case study makes allocation tradeoffs visible before a commitment is made.
+Compare planned work with the time each person actually has available. Change a draft to address an overload, then review it before saving the plan. All records in this demo are fictional.
+
+**Try it:** Find Noah’s week with no available time, change the conflicting allocation, and compare the draft with the saved plan. [Open the demo](https://mvahedi2020.github.io/Resource-Radar/) · [Follow the walkthrough](docs/product/Sample%20Walkthrough.md).
 
 **[Try the demo](https://mvahedi2020.github.io/Resource-Radar/)** · [Product requirements](docs/product/PRD.md) · [Case study](docs/product/Case_Study.md) · [Evaluation plan](docs/product/Measures.md) · [Watch the workflow](docs/media/workflow.webm)
 
