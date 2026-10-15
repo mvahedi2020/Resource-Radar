@@ -4,6 +4,8 @@ Compare planned work with the time each person actually has available. Change a 
 
 **Try it:** Find Noah’s week with no available time, change the conflicting allocation, and compare the draft with the saved plan. [Open the demo](https://mvahedi2020.github.io/Resource-Radar/) · [Follow the walkthrough](docs/product/Sample%20Walkthrough.md).
 
+**Experience connection:** My program management work has included cross-functional planning, dependencies and delivery risks. Resource Radar isolates the capacity conversation that comes before a credible commitment. [Read the decision to challenge](docs/product/Case_Study.md#experience-and-decision).
+
 **[Try the demo](https://mvahedi2020.github.io/Resource-Radar/)** · [Product requirements](docs/product/PRD.md) · [Case study](docs/product/Case_Study.md) · [Evaluation plan](docs/product/Measures.md) · [Watch the workflow](docs/media/workflow.webm)
 
 ![Resource Radar weekly planning workspace](docs/media/screenshot.png)

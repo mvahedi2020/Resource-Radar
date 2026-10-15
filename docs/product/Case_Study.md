@@ -4,6 +4,12 @@ Compare planned work with the time each person actually has available. Change a 
 
 **The product choice:** Make time constraints visible while leaving scope and staffing decisions with the team. [Try the sample](https://mvahedi2020.github.io/Resource-Radar/) · [Follow the walkthrough](Sample%20Walkthrough.md).
 
+## Experience and decision
+
+My program management work has included cross-functional planning, dependencies and delivery risks. Resource Radar isolates the capacity conversation that comes before a credible commitment. This is a separate fictional portfolio exercise; its records, rules and results do not reproduce an employer system.
+
+**Decision to challenge:** If a person is overloaded, which scope or commitment should change? Clearing a red cell by removing work does not resolve the customer need or secure the affected owner’s agreement.
+
 ## The product problem
 
 Northstar is a fictional B2B SaaS company planning several launch initiatives across a small cross-functional team. A typical staffing sheet can show assignments while hiding the constraints that matter: a five-day week is not five available project days when time off and operating work are already committed.
