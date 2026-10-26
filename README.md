@@ -55,3 +55,7 @@ If saved planning data is incompatible, the sample remains available for inspect
 ## Read the product documents
 
 [Open the formatted document index](https://mvahedi2020.github.io/Resource-Radar/docs/index.html) for the case study, walkthrough, requirements, and supporting product work. Markdown files remain the source documents.
+
+## Typography
+
+The demo and product-document reader use Aptos for body text and SF Pro Rounded for headings. Fonts use the viewer’s installed copies; approved local fallbacks keep the pages readable when a primary font is unavailable. No font files or external font service are loaded.

@@ -158,7 +158,7 @@ export default function App() {
             <article><span className="metric-icon teal"><Users size={20} /></span><div><strong>{draft.people.length}</strong><span>Team members</span></div></article>
             <article><span className="metric-icon blue"><CalendarDays size={20} /></span><div><strong>{allocated} / {available}</strong><span>Days allocated</span></div></article>
             <article className={overloads.length ? 'metric-alert' : ''}><span className="metric-icon orange"><AlertTriangle size={20} /></span><div><strong>{overloads.length}</strong><span>Load conflicts</span></div></article>
-            <article><div className="util-copy"><strong>{available ? Math.round(allocated / available * 100) : 0}%</strong><span>Portfolio utilization</span></div><div className="mini-bar"><span style={{ width: `${Math.min(100, available ? allocated / available * 100 : 0)}%` }} /></div></article>
+            <article><div className="util-copy"><strong>{available ? `${Math.round(allocated / available * 100)}%` : '—'}</strong><span>{available ? 'Portfolio utilization' : 'No available days'}</span></div><div className="mini-bar"><span style={{ width: `${Math.min(100, available ? allocated / available * 100 : 0)}%` }} /></div></article>
           </section>
 
           <section className="workspace-card">

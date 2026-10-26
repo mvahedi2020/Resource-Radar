@@ -47,7 +47,7 @@ As a portfolio lead, I can see capacity, time off, operating commitments, and in
 
 | Requirement | Acceptance criterion |
 | --- | --- |
-| Model weekly capacity | Capacity, time off, commitments, allocations, available days, and balance are visible for each person-week. Availability equals capacity minus time off and commitments, with a minimum of zero. |
+| Model weekly capacity | Capacity, time off, commitments, allocations, available days, and balance are visible for each person-week. Availability equals capacity minus time off and commitments, with a minimum of zero. When total availability is zero, portfolio utilization is unavailable rather than 0%; assigned work still appears as a conflict. |
 | Make constraints editable | Allocation values accept 0–10 person-days; time off and commitments accept values from zero through the person’s weekly capacity. The planning surface reflects the result immediately. |
 | Identify decision risk | A zero-availability or overloaded person-week is visible in both text and status treatment. Initiative summaries identify allocations that intersect with an overload. |
 | Preserve a safe planning state | Draft changes do not alter the applied baseline until Apply draft is selected. Undo restores the draft from that baseline; a reset confirmation restores the fictional sample and offers one-step recovery of the previous scenario. |
